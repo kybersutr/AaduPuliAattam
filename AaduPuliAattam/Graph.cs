@@ -17,9 +17,9 @@ namespace AaduPuliAattam
     internal class Graph
     {
         private Vertex[] vertices;
-        private (Vertex, Vertex)[] edges;
+        private List<(Vertex, Vertex)> edges;
 
-        public Graph(Vertex[] vertices, (Vertex, Vertex)[] edges) 
+        public Graph(Vertex[] vertices, List<(Vertex, Vertex)> edges) 
         {
             this.vertices = vertices;
             this.edges = edges;

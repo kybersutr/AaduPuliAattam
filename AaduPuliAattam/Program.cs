@@ -1,3 +1,7 @@
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("UnitTests")]
 namespace AaduPuliAattam
 {
     internal static class Program
@@ -12,6 +16,10 @@ namespace AaduPuliAattam
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+
+            GraphParser parser = new GraphParser();
+            parser.ParseGraph("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\GameBoards\\Simple.brd");
+
         }
     }
 }
