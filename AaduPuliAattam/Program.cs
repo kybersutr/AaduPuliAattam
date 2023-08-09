@@ -18,7 +18,7 @@ namespace AaduPuliAattam
             Form1 form = new Form1();
 
             GraphParser parser = new GraphParser();
-            Graph g = parser.ParseGraph("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\GameBoards\\Intermediate.brd");
+            Graph g = parser.ParseGraph("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\GameBoards\\Advanced.brd");
             form.DrawBoard(g);
 
 
