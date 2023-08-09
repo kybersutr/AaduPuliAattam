@@ -41,25 +41,27 @@ namespace AaduPuliAattam
                     vertices[i] = (new Vertex(x, y));
                 }
 
-                List<(Vertex, Vertex)> edges = new List<(Vertex, Vertex)>();
+                List<List<Vertex>> edges = new List<List<Vertex>>();
 
                 while (!reader.EndOfStream) 
                 {
                     string edge = reader.ReadLine();
                     string[] splitEdge = edge.Split(' ');
 
+                    List<Vertex> edgeVertices = new List<Vertex>();
                     // TODO: vertex index out of range
-                    if (!int.TryParse(splitEdge[0], out int from)) 
+
+                    foreach (string vertex in splitEdge) 
                     {
-                        throw new Exception("Vertex number should be an Integer in range 0 to n.");
-                    }
-                    
-                    if (!int.TryParse(splitEdge[1], out int to)) 
-                    {
-                        throw new Exception("Vertex number should be an Integer in range 0 to n.");
+                        if (!int.TryParse(vertex, out int v)) 
+                        {
+                            throw new Exception("Vertex index should be an Integer.");
+                        }
+
+                        edgeVertices.Add(vertices[v]);
                     }
 
-                    edges.Add((vertices[from], vertices[to])); 
+                    edges.Add(edgeVertices); 
                 }
 
                 return new Graph(vertices, edges);
