@@ -50,6 +50,22 @@ namespace AaduPuliAattam
                 buttons.Add(newButton);
             }
 
+            using (Graphics gx = CreateGraphics()) 
+            {
+                gx.Clear(this.BackColor);
+                foreach (List<Vertex> line in g.Edges)
+                {
+                    Point start = new Point(padding + (line.First().Position.Item1 - g.MinX) * widthUnit,
+                        padding + (line.First().Position.Item2 - g.MinY) * heightUnit);
+
+                    Point end = new Point(padding + (line.Last().Position.Item1 - g.MinX) * widthUnit,
+                        padding + (line.Last().Position.Item2 - g.MinY) * heightUnit);
+
+                    gx.DrawLine(Pens.Black, start, end);
+                }
+            }
+            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
