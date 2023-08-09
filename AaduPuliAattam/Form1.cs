@@ -10,6 +10,8 @@ namespace AaduPuliAattam
         public Form1()
         {
             InitializeComponent();
+
+            this.Text = "Aadu Puli Aattam";
         }
 
         private void Form1_Resize(object sender, EventArgs e)
