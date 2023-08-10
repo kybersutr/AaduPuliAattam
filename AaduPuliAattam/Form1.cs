@@ -85,5 +85,15 @@ namespace AaduPuliAattam
             e.Graphics.Clear(this.BackColor);
             DrawBoard(e.Graphics);
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
