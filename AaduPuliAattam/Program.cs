@@ -1,3 +1,7 @@
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("UnitTests")]
 namespace AaduPuliAattam
 {
     internal static class Program
@@ -11,7 +15,16 @@ namespace AaduPuliAattam
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Form1 form = new Form1();
+
+            GraphParser parser = new GraphParser();
+            Graph g = parser.ParseGraph("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\GameBoards\\Advanced.brd");
+            form.Graph = g;
+
+
+            Application.Run(form);
+
+            
         }
     }
 }
