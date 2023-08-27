@@ -15,13 +15,11 @@ namespace AaduPuliAattam
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Form1 form = new Form1();
 
             GraphParser parser = new GraphParser();
             Graph g = parser.ParseGraph("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\GameBoards\\Advanced.brd");
-            form.Graph = g;
 
-
+            Form1 form = new Form1(g);
             Application.Run(form);
 
             

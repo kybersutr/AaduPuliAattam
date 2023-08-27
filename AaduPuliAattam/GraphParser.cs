@@ -20,7 +20,8 @@ namespace AaduPuliAattam
                     throw new Exception("Number of vertices should be an Integer.");
                 }
 
-                Vertex[] vertices = new Vertex[n];
+                List<Vertex> vertices = new List<Vertex>();
+
 
                 for (int i = 0; i < n; ++i) 
                 {
@@ -38,7 +39,7 @@ namespace AaduPuliAattam
                         throw new Exception("Vertex coordinates should be an Integer.");
                     }
 
-                    vertices[i] = (new Vertex(x, y));
+                    vertices.Add(new Vertex(x, y));
                 }
 
                 List<List<Vertex>> edges = new List<List<Vertex>>();

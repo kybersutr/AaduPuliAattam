@@ -4,23 +4,29 @@ namespace AaduPuliAattam
 {
     public partial class Form1 : Form
     {
-        public Graph Graph { get; set; }
         private List<Button> buttons = new List<Button>();
+        private Game game;
+        public static Image tigerImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\tiger.png");
+        public static Image lambImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\lamb.png");
 
-        public Form1()
+        public Form1(Graph graph)
         {
             InitializeComponent();
 
             this.Text = "Aadu Puli Aattam";
+
+            Invalidate();
+            
+            this.game = new Game(graph, new HumanPlayer(), new HumanPlayer());
         }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
             Invalidate();
         }
-        public void DrawBoard(Graphics gx)
+        private void DrawBoard(Graphics gx)
         {
-            Graph g = this.Graph;
+            Graph g = this.game.board;
 
             if (g is null)
             {
@@ -46,13 +52,16 @@ namespace AaduPuliAattam
             }
 
 
-            for (int i = 0; i < g.Vertices.Length; ++i)
+            for (int i = 0; i < g.Vertices.Count; ++i)
             {
                 Vertex v = g.Vertices[i];
                 Button newButton;
                 if (buttons.Count < i + 1)
                 {
                     newButton = new Button();
+                    newButton.Click += Button_Click;
+                    newButton.Width = buttonSize;
+                    newButton.Height = buttonSize;
                 }
                 else
                 {
@@ -61,9 +70,27 @@ namespace AaduPuliAattam
 
                 newButton.Location = new Point(padding + (v.Position.Item1 - g.MinX) * widthUnit - buttonSize / 2,
                     padding + (v.Position.Item2 - g.MinY) * heightUnit - buttonSize / 2);
-                newButton.Height = buttonSize;
-                newButton.Width = buttonSize;
-                newButton.BackColor = Color.Red;
+
+                switch (v.occupiedBy)     
+                {
+                    case Vertex.Occupancy.NOTHING: 
+                        {
+                            newButton.BackColor = Color.Green;
+                            break;
+                        }
+                    case Vertex.Occupancy.LAMB: 
+                        {
+                            newButton.BackColor = Color.White;
+                            break;
+                        }
+                    case Vertex.Occupancy.TIGER: 
+                        {
+                            newButton.BackColor = Color.Orange;
+                            break;
+                        }
+                }
+                //newButton.Width = buttonSize;
+                //newButton.Height = buttonSize;
 
                 if (buttons.Count < i + 1)
                 {
@@ -72,8 +99,11 @@ namespace AaduPuliAattam
                 }
             }
 
+        }
 
-
+        private void NewButton_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -86,6 +116,14 @@ namespace AaduPuliAattam
             DrawBoard(e.Graphics);
         }
 
+        private void Button_Click(object sender, EventArgs e) 
+        {
+            Button clickedButton = sender as Button;
+            int i = buttons.IndexOf(clickedButton);
+
+            game.HandleButtonClick(i);
+
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
