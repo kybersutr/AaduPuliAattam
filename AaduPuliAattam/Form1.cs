@@ -5,7 +5,7 @@ namespace AaduPuliAattam
     public partial class Form1 : Form
     {
         private List<Button> buttons = new List<Button>();
-        private Game game;
+        private HumanGame game;
         public static Image tigerImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\tiger.png");
         public static Image lambImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\lamb.png");
 
@@ -16,8 +16,8 @@ namespace AaduPuliAattam
             this.Text = "Aadu Puli Aattam";
 
             Invalidate();
-            
-            this.game = new Game(graph, new HumanPlayer(), new HumanPlayer());
+
+            this.game = new HumanGame(graph, new Lamb(3), new Tiger());
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -71,19 +71,19 @@ namespace AaduPuliAattam
                 newButton.Location = new Point(padding + (v.Position.Item1 - g.MinX) * widthUnit - buttonSize / 2,
                     padding + (v.Position.Item2 - g.MinY) * heightUnit - buttonSize / 2);
 
-                switch (v.occupiedBy)     
+                switch (v.occupiedBy)
                 {
-                    case Vertex.Occupancy.NOTHING: 
+                    case Vertex.Occupancy.NOTHING:
                         {
                             newButton.BackColor = Color.Green;
                             break;
                         }
-                    case Vertex.Occupancy.LAMB: 
+                    case Vertex.Occupancy.LAMB:
                         {
                             newButton.BackColor = Color.White;
                             break;
                         }
-                    case Vertex.Occupancy.TIGER: 
+                    case Vertex.Occupancy.TIGER:
                         {
                             newButton.BackColor = Color.Orange;
                             break;
@@ -116,7 +116,7 @@ namespace AaduPuliAattam
             DrawBoard(e.Graphics);
         }
 
-        private void Button_Click(object sender, EventArgs e) 
+        private void Button_Click(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
             int i = buttons.IndexOf(clickedButton);

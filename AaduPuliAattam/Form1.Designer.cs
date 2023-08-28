@@ -63,7 +63,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(810, 409);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Name = "Form1";
