@@ -21,7 +21,7 @@ namespace AaduPuliAattam
             const int TNUM = 3;
             const int TRESHOLD = 3;
 
-            this.game = new HumanGame(graph, new Lamb(LNUM), new Tiger());
+            this.game = new HumanGame(graph, new Lamb(LNUM, TRESHOLD), new Tiger());
             game.PlaceTigers(TNUM);
         }
 
@@ -115,11 +115,6 @@ namespace AaduPuliAattam
 
         }
 
-        private void NewButton_Click(object? sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
         }
@@ -136,6 +131,7 @@ namespace AaduPuliAattam
             int i = buttons.IndexOf(clickedButton);
 
             game.HandleButtonClick(i);
+            game.CheckForWin();
 
         }
         private void pictureBox1_Click(object sender, EventArgs e)

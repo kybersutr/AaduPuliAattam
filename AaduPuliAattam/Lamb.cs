@@ -6,12 +6,16 @@
         public int PlacedCount { get; set; }
         public int CapturedCount { get; set; }
         public int selectedLambIndex = -1;
+        public int treshold { get; private set; }
 
-        public Lamb(int totalCount)
+        public List<int> occupiedIndices = new List<int>();
+
+        public Lamb(int totalCount, int treshold)
         {
             this.TotalCount = totalCount;
             this.PlacedCount = 0;
             this.CapturedCount = 0;
+            this.treshold = treshold;
         }
     }
 }

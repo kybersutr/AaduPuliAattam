@@ -139,5 +139,21 @@ namespace AaduPuliAattam
            }
         }
 
+        internal int CheckForWin()
+        {
+            // -1 = no winner
+            // 0 = lamb wins
+            // 1 = tiger wins
+
+            if (lamb.CapturedCount >= lamb.treshold) 
+            {
+                return 1;
+            }
+            if (!tiger.HasLegalMoves) 
+            {
+                return 0;
+            }
+            return -1;
+        }
     }
 }
