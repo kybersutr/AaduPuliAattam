@@ -17,7 +17,12 @@ namespace AaduPuliAattam
 
             Invalidate();
 
-            this.game = new HumanGame(graph, new Lamb(3), new Tiger());
+            const int LNUM = 5;
+            const int TNUM = 3;
+            const int TRESHOLD = 3;
+
+            this.game = new HumanGame(graph, new Lamb(LNUM), new Tiger());
+            game.PlaceTigers(TNUM);
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -34,7 +39,7 @@ namespace AaduPuliAattam
             }
 
             int padding = this.ClientSize.Height / 7; // fixed space around the edges of the form
-            int buttonSize = 20;
+            int buttonSize = 25;
 
             int widthUnit = (this.ClientSize.Width - 2 * padding) / (g.Width);
             int heightUnit = (this.ClientSize.Height - 2 * padding) / (g.Height);
@@ -60,8 +65,6 @@ namespace AaduPuliAattam
                 {
                     newButton = new Button();
                     newButton.Click += Button_Click;
-                    newButton.Width = buttonSize;
-                    newButton.Height = buttonSize;
                 }
                 else
                 {
@@ -88,6 +91,17 @@ namespace AaduPuliAattam
                             newButton.BackColor = Color.Orange;
                             break;
                         }
+                }
+
+                if (v.Selected)
+                {
+                    newButton.Height = (int)(buttonSize * 1.5);
+                    newButton.Width = (int)(buttonSize * 1.5);
+                }
+                else 
+                {
+                    newButton.Height = buttonSize;
+                    newButton.Width = buttonSize;
                 }
                 //newButton.Width = buttonSize;
                 //newButton.Height = buttonSize;

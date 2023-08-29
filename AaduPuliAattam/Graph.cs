@@ -13,15 +13,21 @@ namespace AaduPuliAattam
         public Occupancy occupiedBy = Occupancy.NOTHING;
         public List<Vertex> Neighbors { get; internal set; }
         public List<Vertex> SkipOneNeighbors { get; internal set; }
+
+        public bool Selected { get; set; }
+
         public Vertex(int x, int y) 
         {
             this.Position = (x, y);
+            this.Selected = false;
         }
     }
     public class Graph
     {
         public List<Vertex> Vertices { get; private set; }
         public List<List<Vertex>> Edges { get; private set; }
+
+        public Dictionary<Vertex, Dictionary<Vertex, Vertex>> Between { get; private set; }
 
         public int MinX { get; private set; }
         public int MaxX { get; private set; }
@@ -46,6 +52,13 @@ namespace AaduPuliAattam
             this.Width = this.MaxX - this.MinX;
             this.Height = this.MaxY - this.MinY;
 
+            this.Between = new Dictionary<Vertex, Dictionary<Vertex, Vertex>>();
+
+            foreach (Vertex v in vertices) 
+            {
+                Between[v] = new Dictionary<Vertex, Vertex>();
+            }
+
             GetNeighbors();
         }
 
@@ -68,6 +81,7 @@ namespace AaduPuliAattam
                     if (i > 1) 
                     {
                         e[i].SkipOneNeighbors.Add(e[i - 2]);
+                        Between[e[i]][e[i - 2]] = e[i - 1];
                     }
                     if (i < e.Count - 1) 
                     {
@@ -76,6 +90,7 @@ namespace AaduPuliAattam
                     if (i < e.Count - 2) 
                     {
                         e[i].SkipOneNeighbors.Add(e[i + 2]);
+                        Between[e[i]][e[i + 2]] = e[i + 1];
                     }
                 } 
             }
