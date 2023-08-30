@@ -11,17 +11,16 @@ namespace AaduPuliAattam
         public Graph board;
         private HumanPlayer human;
         private AIPlayer AI;
-        private int turn = 0;
 
         public AIGame(Graph board, HumanPlayer human, AIPlayer AI)
         {
             this.board = board;
             this.human = human;
-            AI = AI;
+            this.AI = AI;
 
-            if (this.human is Tiger) 
+            if (human is Tiger) 
             {
-                turn = 1;
+                AI.Play(board);
             }
         }
 
