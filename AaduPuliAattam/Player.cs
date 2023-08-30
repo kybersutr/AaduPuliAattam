@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    public abstract class Player
+    public interface Player
     {
     }
 }

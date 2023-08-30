@@ -13,15 +13,17 @@ namespace AaduPuliAattam
         {
             InitializeComponent();
 
+            this.WindowState = FormWindowState.Maximized;
+
             this.Text = "Aadu Puli Aattam";
 
             Invalidate();
 
-            const int LNUM = 5;
+            const int LNUM = 10;
             const int TNUM = 3;
             const int TRESHOLD = 3;
 
-            this.game = new HumanGame(graph, new Lamb(LNUM, TRESHOLD), new Tiger());
+            this.game = new HumanGame(graph, new HumanLamb(LNUM), new HumanTiger(TRESHOLD));
             game.PlaceTigers(TNUM);
         }
 
@@ -29,7 +31,7 @@ namespace AaduPuliAattam
         {
             Invalidate();
         }
-        private void DrawBoard(Graphics gx)
+        private void DrawBoard(Graphics gx, bool RedrawAll = false)
         {
             Graph g = this.game.board;
 
@@ -71,8 +73,18 @@ namespace AaduPuliAattam
                     newButton = buttons[i];
                 }
 
-                newButton.Location = new Point(padding + (v.Position.Item1 - g.MinX) * widthUnit - buttonSize / 2,
-                    padding + (v.Position.Item2 - g.MinY) * heightUnit - buttonSize / 2);
+                if (v.Selected)
+                {
+                    newButton.Height = (int)(buttonSize * 1.5);
+                    newButton.Width = (int)(buttonSize * 1.5);
+                }
+                else 
+                {
+                    newButton.Height = buttonSize;
+                    newButton.Width = buttonSize;
+                }
+                newButton.Location = new Point(padding + (v.Position.Item1 - g.MinX) * widthUnit - newButton.Width/ 2,
+                    padding + (v.Position.Item2 - g.MinY) * heightUnit - newButton.Height / 2);
 
                 switch (v.occupiedBy)
                 {
@@ -93,16 +105,7 @@ namespace AaduPuliAattam
                         }
                 }
 
-                if (v.Selected)
-                {
-                    newButton.Height = (int)(buttonSize * 1.5);
-                    newButton.Width = (int)(buttonSize * 1.5);
-                }
-                else 
-                {
-                    newButton.Height = buttonSize;
-                    newButton.Width = buttonSize;
-                }
+                
                 //newButton.Width = buttonSize;
                 //newButton.Height = buttonSize;
 
@@ -131,7 +134,26 @@ namespace AaduPuliAattam
             int i = buttons.IndexOf(clickedButton);
 
             game.HandleButtonClick(i);
-            game.CheckForWin();
+            int status = game.CheckForWin();
+
+            if (status == 0) 
+            {
+                MessageBox.Show("Lambs win.");
+                foreach (Button b in buttons) 
+                {
+                    b.Enabled = false;
+                }
+                return;
+            }
+            else if (status == 1) 
+            {
+                MessageBox.Show("Tigers win.");
+                foreach (Button b in buttons) 
+                {
+                    b.Enabled = false;
+                }
+                return;
+            }
 
         }
         private void pictureBox1_Click(object sender, EventArgs e)

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal class HumanPlayer : Player
+    internal interface HumanPlayer : Player
     {
+        bool Play(Graph board, int buttonIndex);
     }
 }

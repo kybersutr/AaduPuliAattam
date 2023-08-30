@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal class AIPlayer : Player
+    internal interface AIPlayer : Player
     {
+        void Play(Graph board);
     }
 }
