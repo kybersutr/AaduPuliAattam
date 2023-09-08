@@ -8,5 +8,7 @@ namespace AaduPuliAattam
 {
     internal interface Tiger
     {
+        int CapturedCount { get; set; }
+        List<int> OccupiedIndices { get; set; }
     }
 }

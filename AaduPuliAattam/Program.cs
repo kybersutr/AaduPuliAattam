@@ -16,10 +16,10 @@ namespace AaduPuliAattam
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            GraphParser parser = new GraphParser();
+            GraphParser parser = new();
             Graph g = parser.ParseGraph("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\GameBoards\\Advanced.brd");
 
-            Form1 form = new Form1(g);
+            Form1 form = new(g);
             Application.Run(form);
 
             

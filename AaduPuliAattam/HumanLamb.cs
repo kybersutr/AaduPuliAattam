@@ -6,7 +6,7 @@
         public int PlacedCount { get; set; }
         public int selectedLambIndex = -1;
 
-        public List<int> occupiedIndices = new List<int>();
+        public List<int> occupiedIndices = new();
 
         public HumanLamb(int totalCount)
         {

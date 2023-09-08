@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal class AITiger : Tiger, AIPlayer
+    internal class AILambOld : Lamb, AIPlayerOld
     {
+        public int PlacedCount { get; set; }
         public void Play(Graph board)
         {
             throw new NotImplementedException();

@@ -27,7 +27,7 @@ namespace AaduPuliAattam
             for (int i = 0; i < n; i++) 
             {
                 board.Vertices[i].occupiedBy = Vertex.Occupancy.TIGER;
-                tiger.occupiedIndices.Add(i);
+                tiger.OccupiedIndices.Add(i);
             }
         }
         public void HandleButtonClick(int buttonIndex) 
@@ -54,7 +54,7 @@ namespace AaduPuliAattam
             // 0 = lamb wins
             // 1 = tiger wins
 
-            if (tiger.CapturedCount >= tiger.treshold) 
+            if (tiger.CapturedCount >= tiger.Treshold) 
             {
                 return 1;
             }

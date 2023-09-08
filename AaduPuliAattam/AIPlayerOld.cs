@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal class AILamb : Lamb, AIPlayer
+    internal interface AIPlayerOld : Player
     {
-        public void Play(Graph board)
-        {
-            throw new NotImplementedException();
-        }
+        void Play(Graph board);
     }
 }

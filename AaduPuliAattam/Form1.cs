@@ -4,7 +4,7 @@ namespace AaduPuliAattam
 {
     public partial class Form1 : Form
     {
-        private List<Button> buttons = new List<Button>();
+        private List<Button> buttons = new();
         private HumanGame game;
         public static Image tigerImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\tiger.png");
         public static Image lambImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\lamb.png");
@@ -48,10 +48,10 @@ namespace AaduPuliAattam
 
             foreach (List<Vertex> line in g.Edges)
             {
-                Point start = new Point(padding + (line.First().Position.Item1 - g.MinX) * widthUnit,
+                Point start = new(padding + (line.First().Position.Item1 - g.MinX) * widthUnit,
                     padding + (line.First().Position.Item2 - g.MinY) * heightUnit);
 
-                Point end = new Point(padding + (line.Last().Position.Item1 - g.MinX) * widthUnit,
+                Point end = new(padding + (line.Last().Position.Item1 - g.MinX) * widthUnit,
                     padding + (line.Last().Position.Item2 - g.MinY) * heightUnit);
 
                 gx.DrawLine(Pens.Black, start, end);
@@ -156,14 +156,6 @@ namespace AaduPuliAattam
             }
 
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

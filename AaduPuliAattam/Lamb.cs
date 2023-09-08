@@ -8,5 +8,6 @@ namespace AaduPuliAattam
 {
     internal interface Lamb
     {
+        public int PlacedCount {get; set;}
     }
 }
