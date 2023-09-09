@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal class AITiger : Tiger, AIPlayer
+    internal class AITigerOld : AIPlayer, Tiger
     {
-        public List<int> OccupiedIndices { get; set; } 
+        public List<int> OccupiedIndicesT { get; set; } 
         public int CapturedCount { get; set; }
         public int Treshold { get; private set; }
 
-        public AITiger(int treshold)
+        public AITigerOld(int treshold)
         {
             this.Treshold = treshold;
             this.CapturedCount = 0;
-            this.OccupiedIndices = new List<int>();
+            this.OccupiedIndicesT = new List<int>();
         }
 
         public void Play(Graph board)
@@ -25,16 +25,16 @@ namespace AaduPuliAattam
             int bestScore = int.MinValue;
             foreach (Move move in GenerateMoves(board)) 
             {
-                move.Apply(board, null, null);
+                move.Apply(board, null);
                 // Do MinMax
-                move.Reverse(board, null, null);
+                move.Reverse(board, null);
             }
         }
 
         private List<Move> GenerateMoves(Graph board)
         {
             List<Move> moves = new();
-            foreach (int tigerIndex in OccupiedIndices) 
+            foreach (int tigerIndex in OccupiedIndicesT) 
             {
                 foreach (Vertex neighbor in board.Vertices[tigerIndex].Neighbors) 
                 {

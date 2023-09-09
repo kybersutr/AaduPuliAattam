@@ -9,5 +9,6 @@ namespace AaduPuliAattam
     internal interface Lamb
     {
         public int PlacedCount {get; set;}
+        public int TotalCount { get; set; }
     }
 }

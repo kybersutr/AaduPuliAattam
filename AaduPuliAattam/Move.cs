@@ -38,9 +38,9 @@ namespace AaduPuliAattam
             else 
             {
                 this.from.occupiedBy = Vertex.Occupancy.NOTHING;
-                player.OccupiedIndices.Remove(board.Vertices.IndexOf(from));
+                player.OccupiedIndicesT.Remove(board.Vertices.IndexOf(from));
                 this.to.occupiedBy = Vertex.Occupancy.TIGER;
-                player.OccupiedIndices.Add(board.Vertices.IndexOf(to)); 
+                player.OccupiedIndicesT.Add(board.Vertices.IndexOf(to)); 
                 if (captures != null) 
                 {
                     this.captures.occupiedBy = Vertex.Occupancy.NOTHING;
@@ -66,9 +66,9 @@ namespace AaduPuliAattam
             else 
             {
                 this.from.occupiedBy = Vertex.Occupancy.TIGER;
-                player.OccupiedIndices.Add(board.Vertices.IndexOf(from));
+                player.OccupiedIndicesT.Add(board.Vertices.IndexOf(from));
                 this.to.occupiedBy = Vertex.Occupancy.NOTHING;
-                player.OccupiedIndices.Remove(board.Vertices.IndexOf(to));
+                player.OccupiedIndicesT.Remove(board.Vertices.IndexOf(to));
                 if (captures != null) 
                 {
                     this.captures.occupiedBy = Vertex.Occupancy.LAMB;

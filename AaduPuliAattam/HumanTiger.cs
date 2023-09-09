@@ -3,7 +3,7 @@
     internal class HumanTiger : Tiger, HumanPlayer
     {
         public int selectedTigerIndex = -1;
-        public List<int> OccupiedIndices { get; set; }
+        public List<int> OccupiedIndicesT { get; set; }
         public int CapturedCount { get; set; }
         public int Treshold { get; private set; }
 
@@ -11,12 +11,12 @@
         {
             this.Treshold = treshold;
             this.CapturedCount = 0;
-            this.OccupiedIndices = new List<int>();
+            this.OccupiedIndicesT = new List<int>();
         }
 
         public bool HasLegalMoves(Graph board) 
         {
-            foreach (int i in OccupiedIndices) 
+            foreach (int i in OccupiedIndicesT) 
             {
                 foreach (Vertex neighbor in board.Vertices[i].Neighbors) 
                 {
@@ -65,9 +65,9 @@
                 if (board.Vertices[buttonIndex].Neighbors.Contains(board.Vertices[selectedTigerIndex]))
                 {
                     board.Vertices[buttonIndex].occupiedBy = Vertex.Occupancy.TIGER;
-                    OccupiedIndices.Add(buttonIndex);
+                    OccupiedIndicesT.Add(buttonIndex);
                     board.Vertices[selectedTigerIndex].occupiedBy = Vertex.Occupancy.NOTHING;
-                    OccupiedIndices.Remove(selectedTigerIndex);
+                    OccupiedIndicesT.Remove(selectedTigerIndex);
                     board.Vertices[selectedTigerIndex].Selected = false;
                     selectedTigerIndex = -1;
                     return true;
@@ -79,9 +79,9 @@
                     if (between.occupiedBy == Vertex.Occupancy.LAMB)
                     {
                         board.Vertices[selectedTigerIndex].occupiedBy = Vertex.Occupancy.NOTHING;
-                        OccupiedIndices.Remove(selectedTigerIndex);
+                        OccupiedIndicesT.Remove(selectedTigerIndex);
                         board.Vertices[buttonIndex].occupiedBy = Vertex.Occupancy.TIGER;
-                        OccupiedIndices.Add(buttonIndex);
+                        OccupiedIndicesT.Add(buttonIndex);
                         board.Vertices[selectedTigerIndex].Selected = false;
                         selectedTigerIndex = -1;
                         between.occupiedBy = Vertex.Occupancy.NOTHING;

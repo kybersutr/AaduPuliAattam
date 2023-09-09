@@ -27,7 +27,7 @@ namespace AaduPuliAattam
             for (int i = 0; i < n; i++) 
             {
                 board.Vertices[i].occupiedBy = Vertex.Occupancy.TIGER;
-                tiger.OccupiedIndices.Add(i);
+                tiger.OccupiedIndicesT.Add(i);
             }
         }
         public void HandleButtonClick(int buttonIndex) 
