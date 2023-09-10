@@ -107,8 +107,15 @@ namespace AaduPuliAattam
                 // lambs win
                 return int.MaxValue;
             }
+
+            return HeuristicScore(board);
         }
 
+        private int HeuristicScore(Graph board) 
+        {
+            // Try to rank the board without using MinMax.
+            return 0;
+        }
         
         public void Play(Graph board)
         {
