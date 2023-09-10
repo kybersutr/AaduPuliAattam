@@ -8,7 +8,6 @@ namespace AaduPuliAattam
 {
     internal class AIGame : Game
     {
-        public Graph board;
         private HumanPlayer human;
         private AIPlayer AI;
 
@@ -22,11 +21,33 @@ namespace AaduPuliAattam
             {
                 AI.Play(board);
             }
+
+            FindOccupied();
+        }
+
+        private void FindOccupied()
+        {
+            for (int i = 0; i < board.Vertices.Count; ++i) 
+            {
+                // TODO: Could have been a switch.
+                if (board.Vertices[i].occupiedBy == Vertex.Occupancy.TIGER)
+                {
+                    AI.OccupiedIndicesT.Add(i);
+                    if (human is Tiger)
+                    {
+                        ((Tiger)human).OccupiedIndicesT.Add(i);
+                    }
+                }
+                else if (board.Vertices[i].occupiedBy == Vertex.Occupancy.LAMB) 
+                {
+                    AI.OccupiedIndicesL.Add(i);
+                }
+            }    
         }
 
         public override int CheckForWin()
         {
-            throw new NotImplementedException();
+            return -1;
         }
 
         public override void HandleButtonClick(int buttonIndex) 

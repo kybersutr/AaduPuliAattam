@@ -21,6 +21,18 @@ namespace AaduPuliAattam
         public int TotalCount { get; set; }
         public int Treshold { get; set; }
 
+        public AIPlayer(bool isLamb, int maxDepth, int totalCount, int treshold)
+        {
+            this.isLamb = isLamb;
+            this.maxDepth = maxDepth;
+            TotalCount = totalCount;
+            Treshold = treshold;
+            CapturedCount = 0;
+            OccupiedIndicesT = new List<int>();
+            OccupiedIndicesL = new List<int>();
+            PlacedCount = 0;
+        }
+
         private Tuple<int, Move> MinMax(Graph board, bool playAsLamb, int depth) 
         {
             // Lambs maximize, tigers minimize
@@ -46,7 +58,7 @@ namespace AaduPuliAattam
 
                     if (playAsLamb)
                     {
-                        if (score > bestScore)
+                        if (score >= bestScore)
                         {
                             bestScore = score;
                             bestMove = move;
@@ -54,7 +66,7 @@ namespace AaduPuliAattam
                     }
                     else
                     {
-                        if (score < bestScore)
+                        if (score <= bestScore)
                         {
                             bestScore = score;
                             bestMove = move;
@@ -73,7 +85,7 @@ namespace AaduPuliAattam
 
                     if (playAsLamb)
                     {
-                        if (score > bestScore)
+                        if (score >= bestScore)
                         {
                             bestScore = score;
                             bestMove = move;
@@ -81,7 +93,7 @@ namespace AaduPuliAattam
                     }
                     else
                     {
-                        if (score < bestScore)
+                        if (score <= bestScore)
                         {
                             bestScore = score;
                             bestMove = move;

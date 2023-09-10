@@ -21,13 +21,12 @@ namespace AaduPuliAattam
 
             const int LNUM = 10;
             const int TRESHOLD = 3;
+            const int AIDEPTH = 3;
 
-            MessageBox.Show(graph.Vertices.Count.ToString());
-            this.game = new HumanGame(graph, new HumanLamb(LNUM), new HumanTiger(TRESHOLD));
+            //this.game = new HumanGame(graph, new HumanLamb(LNUM), new HumanTiger(TRESHOLD));
 
-            MessageBox.Show((this.game.board.Vertices.Count).ToString());
 
-            //this.game = new AIGame(graph, new HumanTiger(TRESHOLD), new AIPlayer());
+            this.game = new AIGame(graph, new HumanTiger(TRESHOLD), new AIPlayer(true, AIDEPTH, LNUM, TRESHOLD));
         }
 
         private void Form1_Resize(object sender, EventArgs e)

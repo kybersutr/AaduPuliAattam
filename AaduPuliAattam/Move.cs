@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +27,11 @@ namespace AaduPuliAattam
             if (isLamb) 
             {
                 this.to.occupiedBy = Vertex.Occupancy.LAMB;
+                player.OccupiedIndicesL.Add(board.Vertices.IndexOf(this.to));
                 if (this.from != null)
                 {
                     this.from.occupiedBy = Vertex.Occupancy.NOTHING;
+                    player.OccupiedIndicesL.Remove(board.Vertices.IndexOf(this.from));
                 }
                 else 
                 {
@@ -54,9 +57,11 @@ namespace AaduPuliAattam
             if (isLamb)
             {
                 this.to.occupiedBy = Vertex.Occupancy.NOTHING;
+                player.OccupiedIndicesL.Remove(board.Vertices.IndexOf(this.to));
                 if (this.from != null)
                 {
                     this.from.occupiedBy = Vertex.Occupancy.LAMB;
+                    player.OccupiedIndicesL.Add(board.Vertices.IndexOf(this.from));
                 }
                 else 
                 {

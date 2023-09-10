@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal class AITigerOld : AIPlayer, Tiger
+    internal class AITigerOld : AIPlayerOld, Tiger
     {
         public List<int> OccupiedIndicesT { get; set; } 
         public int CapturedCount { get; set; }
-        public int Treshold { get; private set; }
+        public int Treshold { get; set; }
 
         public AITigerOld(int treshold)
         {
