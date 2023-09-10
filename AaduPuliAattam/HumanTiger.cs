@@ -5,7 +5,7 @@
         public int selectedTigerIndex = -1;
         public List<int> OccupiedIndicesT { get; set; }
         public int CapturedCount { get; set; }
-        public int Treshold { get; private set; }
+        public int Treshold { get; set; }
 
         public HumanTiger(int treshold)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.DirectoryServices.ActiveDirectory;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,11 @@ namespace AaduPuliAattam
         public int PlacedCount { get; set; }
 
         public int TotalCount { get; set; }
+        public int Treshold { get; set; }
 
         private Tuple<int, Move> MinMax(Graph board, bool playAsLamb, int depth) 
         {
+            // Lambs maximize, tigers minimize
             int bestScore;
             if (playAsLamb)
             {
@@ -90,6 +93,23 @@ namespace AaduPuliAattam
 
             return new Tuple<int, Move>(bestScore, bestMove);
         }
+
+        private int GetScore(Graph board)
+        {
+            if ((CapturedCount == Treshold)) 
+            {
+                // tigers win
+                return int.MinValue;
+            }
+
+            if (GenerateMoves(board, false).Count == 0) 
+            {
+                // lambs win
+                return int.MaxValue;
+            }
+        }
+
+        
         public void Play(Graph board)
         {
             Tuple<int, Move> best = MinMax(board, isLamb, maxDepth);

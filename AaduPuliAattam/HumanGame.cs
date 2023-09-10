@@ -50,6 +50,7 @@ namespace AaduPuliAattam
 
         internal int CheckForWin()
         {
+            // TODO: It's possible that tigers will have possible move after a lamb has to move...
             // -1 = no winner
             // 0 = lamb wins
             // 1 = tiger wins
