@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal class AIGame
+    internal class AIGame : Game
     {
         public Graph board;
         private HumanPlayer human;
@@ -24,7 +24,12 @@ namespace AaduPuliAattam
             }
         }
 
-        public void HandleButtonClick(int buttonIndex) 
+        public override int CheckForWin()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void HandleButtonClick(int buttonIndex) 
         {
             if (human.Play(board, buttonIndex)) 
             {

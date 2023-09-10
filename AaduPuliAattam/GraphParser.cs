@@ -22,6 +22,22 @@ namespace AaduPuliAattam
 
                 List<Vertex> vertices = new List<Vertex>();
 
+                string[] tigers = reader.ReadLine().Split(' ');
+
+                if (!(tigers.Length == 3)) 
+                {
+                    throw new Exception("There should be exactly 3 tigers.");
+                }
+
+                int[] tigerPositions = new int[tigers.Length];
+                for (int t = 0; t < tigers.Length; ++t) 
+                {
+                    if (!int.TryParse(tigers[t], out int position))
+                    {
+                        throw new Exception("Tiger position should be an Integer.");
+                    }
+                    tigerPositions[t] = position;
+                }
 
                 for (int i = 0; i < n; ++i) 
                 {
@@ -40,6 +56,11 @@ namespace AaduPuliAattam
                     }
 
                     vertices.Add(new Vertex(x, y));
+                }
+
+                foreach (int p in tigerPositions) 
+                {
+                    vertices[p].occupiedBy = Vertex.Occupancy.TIGER;
                 }
 
                 List<List<Vertex>> edges = new List<List<Vertex>>();

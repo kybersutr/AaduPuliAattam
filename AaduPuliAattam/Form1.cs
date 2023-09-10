@@ -5,7 +5,7 @@ namespace AaduPuliAattam
     public partial class Form1 : Form
     {
         private List<Button> buttons = new();
-        private HumanGame game;
+        private Game game;
         public static Image tigerImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\tiger.png");
         public static Image lambImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\lamb.png");
 
@@ -20,11 +20,14 @@ namespace AaduPuliAattam
             Invalidate();
 
             const int LNUM = 10;
-            const int TNUM = 3;
             const int TRESHOLD = 3;
 
+            MessageBox.Show(graph.Vertices.Count.ToString());
             this.game = new HumanGame(graph, new HumanLamb(LNUM), new HumanTiger(TRESHOLD));
-            game.PlaceTigers(TNUM);
+
+            MessageBox.Show((this.game.board.Vertices.Count).ToString());
+
+            //this.game = new AIGame(graph, new HumanTiger(TRESHOLD), new AIPlayer());
         }
 
         private void Form1_Resize(object sender, EventArgs e)

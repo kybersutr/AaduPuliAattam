@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal class HumanGame
+    internal class HumanGame : Game
     {
 
-        public Graph board;
         private HumanLamb lamb;
         private HumanTiger tiger;
         private int turn = 0; // 0 = lamb, 1 = tiger
@@ -20,6 +19,19 @@ namespace AaduPuliAattam
             this.board = board;
             this.lamb = lamb;
             this.tiger = tiger;
+
+            FindOccupiedByTiger();
+        }
+
+        private void FindOccupiedByTiger()
+        {
+            for (int i = 0; i < board.Vertices.Count; ++i) 
+            {
+                if (board.Vertices[i].occupiedBy == Vertex.Occupancy.TIGER)
+                {
+                    tiger.OccupiedIndicesT.Add(i);
+                }
+            }
         }
 
         public void PlaceTigers(int n) 
@@ -30,7 +42,7 @@ namespace AaduPuliAattam
                 tiger.OccupiedIndicesT.Add(i);
             }
         }
-        public void HandleButtonClick(int buttonIndex) 
+        public override void HandleButtonClick(int buttonIndex) 
         {
             if (turn == 0)
             {
@@ -48,7 +60,7 @@ namespace AaduPuliAattam
             }
         }
 
-        internal int CheckForWin()
+        public override int CheckForWin()
         {
             // TODO: It's possible that tigers will have possible move after a lamb has to move...
             // -1 = no winner
@@ -65,5 +77,6 @@ namespace AaduPuliAattam
             }
             return -1;
         }
+
     }
 }

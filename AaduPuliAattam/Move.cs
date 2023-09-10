@@ -9,9 +9,9 @@ namespace AaduPuliAattam
     internal class Move
     {
         public bool isLamb;
-        public Vertex from;
+        public Vertex? from;
         public Vertex to;
-        public Vertex captures;
+        public Vertex? captures;
 
         public Move(bool lamb, Vertex from, Vertex to, Vertex? captures = null)
         {

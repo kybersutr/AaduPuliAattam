@@ -2,7 +2,7 @@
 {
     internal class HumanLamb : Lamb, HumanPlayer
     {
-        public int TotalCount { get; private set; }
+        public int TotalCount { get; set; }
         public int PlacedCount { get; set; }
         public int selectedLambIndex = -1;
 
