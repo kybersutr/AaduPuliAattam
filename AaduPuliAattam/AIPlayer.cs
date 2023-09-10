@@ -114,7 +114,11 @@ namespace AaduPuliAattam
         private int HeuristicScore(Graph board) 
         {
             // Try to rank the board without using MinMax.
-            return 0;
+            // Ranking will use number of captured lambs.
+            // There should also be some metric that would make the score higher, if tigers have "less space to move".
+            int score = 0;
+            score -= 100 * CapturedCount/Treshold; // Percent of lambs tigers have already captured
+            return score;
         }
         
         public void Play(Graph board)
