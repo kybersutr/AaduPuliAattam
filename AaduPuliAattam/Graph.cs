@@ -10,7 +10,7 @@ namespace AaduPuliAattam
     {
         public (int, int) Position { get; private set; }
         public enum Occupancy { NOTHING, TIGER, LAMB };
-        public Occupancy occupiedBy = Occupancy.NOTHING;
+        public Occupancy occupiedBy { get; set; }
         public List<Vertex> Neighbors { get; internal set; }
         public List<Vertex> SkipOneNeighbors { get; internal set; }
 

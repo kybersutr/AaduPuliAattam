@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal class AIPlayer : Tiger, Lamb
+    public class AIPlayer : Tiger, Lamb
     {
         public bool isLamb;
         public int maxDepth;

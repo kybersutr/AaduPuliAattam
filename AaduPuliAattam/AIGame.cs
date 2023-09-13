@@ -17,12 +17,13 @@ namespace AaduPuliAattam
             this.human = human;
             this.AI = AI;
 
+            FindOccupied();
+
             if (human is Tiger) 
             {
                 AI.Play(board);
             }
 
-            FindOccupied();
         }
 
         private void FindOccupied()

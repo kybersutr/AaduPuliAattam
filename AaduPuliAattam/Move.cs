@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal class Move
+    public class Move
     {
         public bool isLamb;
         public Vertex? from;
@@ -22,7 +22,7 @@ namespace AaduPuliAattam
             this.captures = captures;
         }
 
-        internal void Apply(Graph board, AIPlayer player)
+        public void Apply(Graph board, AIPlayer player)
         {
             if (isLamb) 
             {
@@ -47,12 +47,13 @@ namespace AaduPuliAattam
                 if (captures != null) 
                 {
                     this.captures.occupiedBy = Vertex.Occupancy.NOTHING;
+                    player.OccupiedIndicesL.Remove(board.Vertices.IndexOf(this.captures));
                     player.CapturedCount++;
                 }
             }
         }
 
-        internal void Reverse(Graph board, AIPlayer player)
+        public void Reverse(Graph board, AIPlayer player)
         {
             if (isLamb)
             {
@@ -77,6 +78,7 @@ namespace AaduPuliAattam
                 if (captures != null) 
                 {
                     this.captures.occupiedBy = Vertex.Occupancy.LAMB;
+                    player.OccupiedIndicesL.Add(board.Vertices.IndexOf(this.captures));
                     player.CapturedCount--;
                 }
             }

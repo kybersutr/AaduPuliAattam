@@ -58,6 +58,11 @@ namespace AaduPuliAattam
                     vertices.Add(new Vertex(x, y));
                 }
 
+                foreach (Vertex v in vertices) 
+                {
+                    v.occupiedBy = Vertex.Occupancy.NOTHING;
+                }
+
                 foreach (int p in tigerPositions) 
                 {
                     vertices[p].occupiedBy = Vertex.Occupancy.TIGER;

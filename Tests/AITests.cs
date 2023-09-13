@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AaduPuliAattam
+namespace Tests
 {
-    internal interface AIPlayerOld : Player
+    [TestClass]
+    public class AITests 
     {
-        void Play(Graph board);
     }
 }
