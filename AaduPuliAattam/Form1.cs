@@ -26,8 +26,8 @@ namespace AaduPuliAattam
             //this.game = new HumanGame(graph, new HumanLamb(LNUM), new HumanTiger(TRESHOLD));
 
 
-            this.game = new AIGame(graph, new HumanLamb(LNUM), new AIPlayer(false, AIDEPTH, LNUM, TRESHOLD));
-            //this.game = new AIGame(graph, new HumanTiger(TRESHOLD), new AIPlayer(true, AIDEPTH, LNUM, TRESHOLD));
+            //this.game = new AIGame(graph, new HumanLamb(LNUM), new AIPlayer(false, AIDEPTH, LNUM, TRESHOLD));
+            this.game = new AIGame(graph, new HumanTiger(TRESHOLD), new AIPlayer(true, AIDEPTH, LNUM, TRESHOLD));
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -81,12 +81,12 @@ namespace AaduPuliAattam
                     newButton.Height = (int)(buttonSize * 1.5);
                     newButton.Width = (int)(buttonSize * 1.5);
                 }
-                else 
+                else
                 {
                     newButton.Height = buttonSize;
                     newButton.Width = buttonSize;
                 }
-                newButton.Location = new Point(padding + (v.Position.Item1 - g.MinX) * widthUnit - newButton.Width/ 2,
+                newButton.Location = new Point(padding + (v.Position.Item1 - g.MinX) * widthUnit - newButton.Width / 2,
                     padding + (v.Position.Item2 - g.MinY) * heightUnit - newButton.Height / 2);
 
                 switch (v.occupiedBy)
@@ -108,7 +108,7 @@ namespace AaduPuliAattam
                         }
                 }
 
-                
+
                 //newButton.Width = buttonSize;
                 //newButton.Height = buttonSize;
 
@@ -116,6 +116,18 @@ namespace AaduPuliAattam
                 {
                     this.Controls.Add(newButton);
                     buttons.Add(newButton);
+                }
+
+                GameStatus status = game.GetStatus();
+                textBox1.Text = "Lambs left to place: " + status.lambsToPlace;
+                textBox2.Text = "Lambs captured: " + status.lambsCaptured;
+                if (status.lambsTurn)
+                {
+                    textBox3.Text = "It's lamb's turn.";
+                }
+                else 
+                {
+                    textBox3.Text = "It's tiger's turn.";
                 }
             }
 
@@ -139,19 +151,19 @@ namespace AaduPuliAattam
             game.HandleButtonClick(i);
             int status = game.CheckForWin();
 
-            if (status == 0) 
+            if (status == 0)
             {
                 MessageBox.Show("Lambs win.");
-                foreach (Button b in buttons) 
+                foreach (Button b in buttons)
                 {
                     b.Enabled = false;
                 }
                 return;
             }
-            else if (status == 1) 
+            else if (status == 1)
             {
                 MessageBox.Show("Tigers win.");
-                foreach (Button b in buttons) 
+                foreach (Button b in buttons)
                 {
                     b.Enabled = false;
                 }
@@ -160,5 +172,9 @@ namespace AaduPuliAattam
 
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

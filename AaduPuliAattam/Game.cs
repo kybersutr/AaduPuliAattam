@@ -13,5 +13,8 @@ namespace AaduPuliAattam
         public abstract int CheckForWin();
 
         public abstract void HandleButtonClick(int i);
+
+        public abstract GameStatus GetStatus();
+
     }
 }

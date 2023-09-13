@@ -78,5 +78,13 @@ namespace AaduPuliAattam
             return -1;
         }
 
+        public override GameStatus GetStatus()
+        {
+            int lambsPlaced = lamb.TotalCount - lamb.PlacedCount;
+            int capturedCount = tiger.CapturedCount;
+            bool lambTurn = (turn == 0);
+
+            return new GameStatus(lambsPlaced, capturedCount, lambTurn);
+        }
     }
 }

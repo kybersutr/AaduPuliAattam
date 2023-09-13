@@ -55,8 +55,22 @@ namespace AaduPuliAattam
         {
             if (human.Play(board, buttonIndex)) 
             {
+                if (human is Tiger) 
+                {
+                    AI.CapturedCount = ((Tiger)human).CapturedCount;
+                    AI.OccupiedIndicesT = ((Tiger)human).OccupiedIndicesT;
+                }
                 AI.Play(board);
             }
+        }
+
+        public override GameStatus GetStatus()
+        {
+            int lambsPlaced = AI.TotalCount - AI.PlacedCount;
+            int lambsCaptured = AI.CapturedCount;
+            bool lambMove = (human is Lamb);
+
+            return new GameStatus(lambsPlaced, lambsCaptured, lambMove);
         }
     }
 }

@@ -33,6 +33,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -57,11 +60,36 @@
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(205, 12);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(417, 27);
+            textBox1.TabIndex = 2;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(205, 45);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(417, 27);
+            textBox2.TabIndex = 3;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(205, 76);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(417, 27);
+            textBox3.TabIndex = 4;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(810, 409);
+            Controls.Add(textBox3);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Name = "Form1";
@@ -72,11 +100,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
     }
 }
