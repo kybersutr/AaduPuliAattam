@@ -29,7 +29,7 @@ namespace AaduPuliAattam
             {
                 this.game = new AIGame(graph, new HumanTiger(treshold), new AIPlayer(true, AIDEPTH, lnum, treshold));
             }
-            else 
+            else
             {
                 this.game = new AIGame(graph, new HumanLamb(lnum), new AIPlayer(false, AIDEPTH, lnum, treshold));
             }
@@ -126,14 +126,16 @@ namespace AaduPuliAattam
 
                 GameStatus status = game.GetStatus();
                 textBox1.Text = "Lambs left to place: " + status.lambsToPlace;
-                textBox2.Text = "Lambs captured: " + status.lambsCaptured;
+                textBox2.Text = "Captured: " + status.lambsCaptured;
                 if (status.lambsTurn)
                 {
-                    textBox3.Text = "It's lamb's turn.";
+                    pictureBox1.BackColor = Color.Yellow;
+                    pictureBox2.BackColor = this.BackColor;
                 }
                 else
                 {
-                    textBox3.Text = "It's tiger's turn.";
+                    pictureBox2.BackColor = Color.Yellow;
+                    pictureBox1.BackColor = this.BackColor;
                 }
             }
 
@@ -160,20 +162,12 @@ namespace AaduPuliAattam
             if (status == 0)
             {
                 MessageBox.Show("Lambs win.");
-                foreach (Button b in buttons)
-                {
-                    b.Enabled = false;
-                }
-                return;
+                this.Close();
             }
             else if (status == 1)
             {
                 MessageBox.Show("Tigers win.");
-                foreach (Button b in buttons)
-                {
-                    b.Enabled = false;
-                }
-                return;
+                this.Close();
             }
 
         }
@@ -181,6 +175,11 @@ namespace AaduPuliAattam
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

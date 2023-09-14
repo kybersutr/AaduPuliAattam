@@ -33,9 +33,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            button1 = new Button();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
-            textBox3 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -52,47 +52,57 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(708, 12);
+            pictureBox2.Location = new Point(830, 12);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(80, 80);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button1.Location = new Point(779, 471);
+            button1.Name = "button1";
+            button1.Size = new Size(140, 29);
+            button1.TabIndex = 5;
+            button1.Text = "Back to Menu";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // textBox1
             // 
-            textBox1.Location = new Point(205, 12);
+            textBox1.Location = new Point(98, 12);
+            textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(417, 27);
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(80, 80);
             textBox1.TabIndex = 2;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(205, 45);
+            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            textBox2.Location = new Point(744, 12);
+            textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(417, 27);
+            textBox2.ReadOnly = true;
+            textBox2.Size = new Size(80, 80);
             textBox2.TabIndex = 3;
             // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(205, 76);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(417, 27);
-            textBox3.TabIndex = 4;
-            // 
-            // Form1
+            // GameForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(810, 409);
-            Controls.Add(textBox3);
+            ClientSize = new Size(932, 508);
+            Controls.Add(button1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
-            Name = "Form1";
+            Name = "GameForm";
             Text = "Form1";
             Load += Form1_Load;
             Paint += Form1_Paint;
@@ -107,8 +117,8 @@
 
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button button1;
         private TextBox textBox1;
         private TextBox textBox2;
-        private TextBox textBox3;
     }
 }
