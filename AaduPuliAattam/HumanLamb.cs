@@ -6,12 +6,12 @@
         public int PlacedCount { get; set; }
         public int selectedLambIndex = -1;
 
-        public List<int> occupiedIndices = new();
-
+        public List<int> OccupiedIndicesL { get; set; }
         public HumanLamb(int totalCount)
         {
             this.TotalCount = totalCount;
             this.PlacedCount = 0;
+            OccupiedIndicesL = new List<int> { };
         }
 
         public bool Play(Graph board, int buttonIndex)
@@ -42,6 +42,7 @@
                 if (PlacedCount < TotalCount)
                 {
                     board.Vertices[buttonIndex].occupiedBy = Vertex.Occupancy.LAMB;
+                    OccupiedIndicesL.Add(buttonIndex);
                     PlacedCount++;
                     return true;
                 }
@@ -58,7 +59,9 @@
                             return false;
                         }
                         board.Vertices[buttonIndex].occupiedBy = Vertex.Occupancy.LAMB;
+                        OccupiedIndicesL.Add(buttonIndex);
                         board.Vertices[selectedLambIndex].occupiedBy = Vertex.Occupancy.NOTHING;
+                        OccupiedIndicesL.Remove(buttonIndex);
                         board.Vertices[selectedLambIndex].Selected = false;
                         selectedLambIndex = -1;
                         return true;

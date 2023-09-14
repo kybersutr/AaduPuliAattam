@@ -48,6 +48,19 @@ namespace AaduPuliAattam
 
         public override int CheckForWin()
         {
+            // TODO: It's possible that tigers will have possible move after a lamb has to move...
+            // -1 = no winner
+            // 0 = lamb wins
+            // 1 = tiger wins
+
+            if (AI.CapturedCount >= AI.Treshold) 
+            {
+                return 1;
+            }
+            if (!AI.TigerHasMoves(board)) 
+            {
+                return 0;
+            }
             return -1;
         }
 
@@ -55,10 +68,28 @@ namespace AaduPuliAattam
         {
             if (human.Play(board, buttonIndex)) 
             {
-                if (human is Tiger) 
+                if (CheckForWin() != -1) 
                 {
+                    return;
+                }
+                if (human is Tiger)
+                {
+
                     AI.CapturedCount = ((Tiger)human).CapturedCount;
                     AI.OccupiedIndicesT = ((Tiger)human).OccupiedIndicesT;
+                }
+                else 
+                {
+                    for (int i = 0; i < board.Vertices.Count; ++i) 
+                    {
+                        if ((((Lamb)human).OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
+                        {
+                            // TODO: better handling of tiger capturing a lamb?
+                            ((Lamb)human).OccupiedIndicesL.Remove(i);
+                        }
+                    }
+                    AI.OccupiedIndicesL = ((Lamb)human).OccupiedIndicesL;
+                    AI.PlacedCount = ((Lamb)human).PlacedCount;
                 }
                 AI.Play(board);
             }

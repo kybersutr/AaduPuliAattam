@@ -10,5 +10,7 @@ namespace AaduPuliAattam
     {
         public int PlacedCount {get; set;}
         public int TotalCount { get; set; }
+
+        public List<int> OccupiedIndicesL { get; set; }
     }
 }

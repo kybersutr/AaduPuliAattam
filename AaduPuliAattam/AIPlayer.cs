@@ -140,6 +140,10 @@ namespace AaduPuliAattam
             bestMove.Apply(board, this);
         }
 
+        public bool TigerHasMoves(Graph board) 
+        {
+            return (GenerateMoves(board, false).Count != 0);
+        }
         private List<Move> GenerateMoves(Graph board, bool playAsLamb) 
         {
             List<Move> moves = new();

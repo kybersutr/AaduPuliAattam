@@ -34,14 +34,6 @@ namespace AaduPuliAattam
             }
         }
 
-        public void PlaceTigers(int n) 
-        {
-            for (int i = 0; i < n; i++) 
-            {
-                board.Vertices[i].occupiedBy = Vertex.Occupancy.TIGER;
-                tiger.OccupiedIndicesT.Add(i);
-            }
-        }
         public override void HandleButtonClick(int buttonIndex) 
         {
             if (turn == 0)
@@ -56,6 +48,14 @@ namespace AaduPuliAattam
                 if (tiger.Play(board, buttonIndex)) 
                 {
                     this.turn = 0;
+                    for (int i = 0; i < board.Vertices.Count; ++i) 
+                    {
+                        if ((lamb.OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
+                        {
+                            // TODO: better handling of tiger capturing a lamb?
+                            lamb.OccupiedIndicesL.Remove(i);
+                        }
+                    }
                 } 
             }
         }

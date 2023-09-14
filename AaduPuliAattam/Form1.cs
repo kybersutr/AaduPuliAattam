@@ -19,15 +19,15 @@ namespace AaduPuliAattam
 
             Invalidate();
 
-            const int LNUM = 6;
-            const int TRESHOLD = 3;
+            const int LNUM = 15;
+            const int TRESHOLD = 5;
             const int AIDEPTH = 3;
 
             //this.game = new HumanGame(graph, new HumanLamb(LNUM), new HumanTiger(TRESHOLD));
 
 
-            //this.game = new AIGame(graph, new HumanLamb(LNUM), new AIPlayer(false, AIDEPTH, LNUM, TRESHOLD));
-            this.game = new AIGame(graph, new HumanTiger(TRESHOLD), new AIPlayer(true, AIDEPTH, LNUM, TRESHOLD));
+            this.game = new AIGame(graph, new HumanLamb(LNUM), new AIPlayer(false, AIDEPTH, LNUM, TRESHOLD));
+            //this.game = new AIGame(graph, new HumanTiger(TRESHOLD), new AIPlayer(true, AIDEPTH, LNUM, TRESHOLD));
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -125,7 +125,7 @@ namespace AaduPuliAattam
                 {
                     textBox3.Text = "It's lamb's turn.";
                 }
-                else 
+                else
                 {
                     textBox3.Text = "It's tiger's turn.";
                 }
