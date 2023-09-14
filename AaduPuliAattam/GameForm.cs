@@ -2,14 +2,14 @@ using System.Runtime.CompilerServices;
 
 namespace AaduPuliAattam
 {
-    public partial class Form1 : Form
+    public partial class GameForm : Form
     {
         private List<Button> buttons = new();
         private Game game;
         public static Image tigerImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\tiger.png");
         public static Image lambImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\lamb.png");
 
-        public Form1(Graph graph)
+        public GameForm(Graph graph, int lnum, int treshold, int mode)
         {
             InitializeComponent();
 
@@ -19,15 +19,21 @@ namespace AaduPuliAattam
 
             Invalidate();
 
-            const int LNUM = 15;
-            const int TRESHOLD = 5;
             const int AIDEPTH = 3;
 
-            //this.game = new HumanGame(graph, new HumanLamb(LNUM), new HumanTiger(TRESHOLD));
+            if (mode == 0)
+            {
+                this.game = new HumanGame(graph, new HumanLamb(lnum), new HumanTiger(treshold));
+            }
+            else if (mode == 1)
+            {
+                this.game = new AIGame(graph, new HumanTiger(treshold), new AIPlayer(true, AIDEPTH, lnum, treshold));
+            }
+            else 
+            {
+                this.game = new AIGame(graph, new HumanLamb(lnum), new AIPlayer(false, AIDEPTH, lnum, treshold));
+            }
 
-
-            this.game = new AIGame(graph, new HumanLamb(LNUM), new AIPlayer(false, AIDEPTH, LNUM, TRESHOLD));
-            //this.game = new AIGame(graph, new HumanTiger(TRESHOLD), new AIPlayer(true, AIDEPTH, LNUM, TRESHOLD));
         }
 
         private void Form1_Resize(object sender, EventArgs e)
