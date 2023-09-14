@@ -80,11 +80,34 @@ namespace AaduPuliAattam
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             boardPath = Path.Combine(dir, "GameBoards", "Intermediate.brd");
+            maxLambs = 20;
+            recommendedLambs = 15;
+            lambs = recommendedLambs;
+
+            recommendedTreshold = 5;
+            treshold = recommendedTreshold;
+
+            numericUpDown1.Maximum = maxLambs;
+            numericUpDown1.Value = recommendedLambs;
+
+            numericUpDown2.Value = recommendedTreshold;
+            numericUpDown2.Maximum = lambs;
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             boardPath = Path.Combine(dir, "GameBoards", "Advanced.brd");
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            lambs = (int)numericUpDown1.Value;
+            numericUpDown2.Maximum = lambs;
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            treshold = (int)numericUpDown2.Value;
         }
     }
 }

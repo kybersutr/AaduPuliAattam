@@ -74,6 +74,7 @@
             // 
             // textBox1
             // 
+            textBox1.BorderStyle = BorderStyle.None;
             textBox1.Location = new Point(98, 12);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
@@ -84,6 +85,7 @@
             // textBox2
             // 
             textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            textBox2.BorderStyle = BorderStyle.None;
             textBox2.Location = new Point(744, 12);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";

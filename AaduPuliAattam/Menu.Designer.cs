@@ -151,13 +151,15 @@
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(150, 27);
             numericUpDown1.TabIndex = 8;
+            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
             // 
             // numericUpDown2
             // 
-            numericUpDown2.Location = new Point(22, 19);
+            numericUpDown2.Location = new Point(6, 28);
             numericUpDown2.Name = "numericUpDown2";
             numericUpDown2.Size = new Size(150, 27);
             numericUpDown2.TabIndex = 9;
+            numericUpDown2.ValueChanged += numericUpDown2_ValueChanged;
             // 
             // button1
             // 
@@ -179,7 +181,7 @@
             groupBox3.Size = new Size(196, 59);
             groupBox3.TabIndex = 11;
             groupBox3.TabStop = false;
-            groupBox3.Text = "groupBox3";
+            groupBox3.Text = "Captured Treshold";
             // 
             // groupBox4
             // 
@@ -190,7 +192,7 @@
             groupBox4.Size = new Size(173, 59);
             groupBox4.TabIndex = 12;
             groupBox4.TabStop = false;
-            groupBox4.Text = "groupBox4";
+            groupBox4.Text = "Number of Lambs";
             // 
             // Menu
             // 
