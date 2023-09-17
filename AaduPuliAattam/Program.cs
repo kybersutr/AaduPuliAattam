@@ -16,12 +16,6 @@ namespace AaduPuliAattam
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            //GraphParser parser = new();
-            //Graph g = parser.ParseGraph("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\GameBoards\\Intermediate.brd");
-
-            //Form1 form = new(g);
-            //Application.Run(form);
-
             Menu menu = new Menu();
             Application.Run(menu);
         }

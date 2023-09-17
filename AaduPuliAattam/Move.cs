@@ -26,61 +26,82 @@ namespace AaduPuliAattam
         {
             if (isLamb) 
             {
-                this.to.occupiedBy = Vertex.Occupancy.LAMB;
-                player.OccupiedIndicesL.Add(board.Vertices.IndexOf(this.to));
-                if (this.from != null)
-                {
-                    this.from.occupiedBy = Vertex.Occupancy.NOTHING;
-                    player.OccupiedIndicesL.Remove(board.Vertices.IndexOf(this.from));
-                }
-                else 
-                {
-                    player.PlacedCount++;
-                }
+                ApplyLamb(board, player);    
             }
             else 
             {
-                this.from.occupiedBy = Vertex.Occupancy.NOTHING;
-                player.OccupiedIndicesT.Remove(board.Vertices.IndexOf(from));
-                this.to.occupiedBy = Vertex.Occupancy.TIGER;
-                player.OccupiedIndicesT.Add(board.Vertices.IndexOf(to)); 
-                if (captures != null) 
-                {
-                    this.captures.occupiedBy = Vertex.Occupancy.NOTHING;
-                    player.OccupiedIndicesL.Remove(board.Vertices.IndexOf(this.captures));
-                    player.CapturedCount++;
-                }
+                ApplyTiger(board, player);
             }
+        }
+
+        private void ApplyLamb(Graph board, AIPlayer player) 
+        {
+            this.to.occupiedBy = Vertex.Occupancy.LAMB;
+            player.OccupiedIndicesL.Add(board.Vertices.IndexOf(this.to));
+            if (this.from != null)
+            {
+                this.from.occupiedBy = Vertex.Occupancy.NOTHING;
+                player.OccupiedIndicesL.Remove(board.Vertices.IndexOf(this.from));
+            }
+            else 
+            {
+                player.PlacedCount++;
+            }
+        }
+
+        private void ApplyTiger(Graph board, AIPlayer player) 
+        {
+            this.from.occupiedBy = Vertex.Occupancy.NOTHING; // from cannot be null in this case
+            player.OccupiedIndicesT.Remove(board.Vertices.IndexOf(from));
+            this.to.occupiedBy = Vertex.Occupancy.TIGER;
+            player.OccupiedIndicesT.Add(board.Vertices.IndexOf(to)); 
+            if (captures != null) 
+            {
+                this.captures.occupiedBy = Vertex.Occupancy.NOTHING;
+                player.OccupiedIndicesL.Remove(board.Vertices.IndexOf(this.captures));
+                player.CapturedCount++;
+            }
+ 
         }
 
         public void Reverse(Graph board, AIPlayer player)
         {
             if (isLamb)
             {
-                this.to.occupiedBy = Vertex.Occupancy.NOTHING;
-                player.OccupiedIndicesL.Remove(board.Vertices.IndexOf(this.to));
-                if (this.from != null)
-                {
-                    this.from.occupiedBy = Vertex.Occupancy.LAMB;
-                    player.OccupiedIndicesL.Add(board.Vertices.IndexOf(this.from));
-                }
-                else 
-                {
-                    player.PlacedCount--;
-                }
+                ReverseLamb(board, player);    
             }
             else 
             {
-                this.from.occupiedBy = Vertex.Occupancy.TIGER;
-                player.OccupiedIndicesT.Add(board.Vertices.IndexOf(from));
-                this.to.occupiedBy = Vertex.Occupancy.NOTHING;
-                player.OccupiedIndicesT.Remove(board.Vertices.IndexOf(to));
-                if (captures != null) 
-                {
-                    this.captures.occupiedBy = Vertex.Occupancy.LAMB;
-                    player.OccupiedIndicesL.Add(board.Vertices.IndexOf(this.captures));
-                    player.CapturedCount--;
-                }
+                ReverseTiger(board, player); 
+            }
+        }
+
+        private void ReverseLamb(Graph board, AIPlayer player) 
+        {
+            this.to.occupiedBy = Vertex.Occupancy.NOTHING;
+            player.OccupiedIndicesL.Remove(board.Vertices.IndexOf(this.to));
+            if (this.from != null)
+            {
+                this.from.occupiedBy = Vertex.Occupancy.LAMB;
+                player.OccupiedIndicesL.Add(board.Vertices.IndexOf(this.from));
+            }
+            else 
+            {
+                player.PlacedCount--;
+            }
+        }
+
+        private void ReverseTiger(Graph board, AIPlayer player) 
+        {
+            this.from.occupiedBy = Vertex.Occupancy.TIGER; // from won't be null in this case
+            player.OccupiedIndicesT.Add(board.Vertices.IndexOf(from));
+            this.to.occupiedBy = Vertex.Occupancy.NOTHING;
+            player.OccupiedIndicesT.Remove(board.Vertices.IndexOf(to));
+            if (captures != null) 
+            {
+                this.captures.occupiedBy = Vertex.Occupancy.LAMB;
+                player.OccupiedIndicesL.Add(board.Vertices.IndexOf(this.captures));
+                player.CapturedCount--;
             }
         }
     }
