@@ -20,7 +20,9 @@ namespace AaduPuliAattam
             this.lamb = lamb;
             this.tiger = tiger;
 
-            FindOccupiedByTiger();
+            FindOccupiedByTiger(); 
+            // Find the vertices occupied by tiger and add them to its OccupiedIndicesT.
+            // This can be done in parsing, since the player does not exist yet.
         }
 
         private void FindOccupiedByTiger()
@@ -52,6 +54,7 @@ namespace AaduPuliAattam
                     {
                         if ((lamb.OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
                         {
+                            // If lamb was captured, we need to update its occupied vertices.
                             lamb.OccupiedIndicesL.Remove(i);
                         }
                     }
@@ -67,10 +70,12 @@ namespace AaduPuliAattam
 
             if (tiger.CapturedCount >= tiger.Treshold) 
             {
+                // Tiger wins if it captured enough lambs.
                 return 1;
             }
             if (!tiger.HasLegalMoves(board)) 
             {
+                // Lamb wins if Tiger has no legal moves.
                 return 0;
             }
             return -1;
