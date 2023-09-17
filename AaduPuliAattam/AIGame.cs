@@ -8,10 +8,10 @@ namespace AaduPuliAattam
 {
     internal class AIGame : Game
     {
-        private HumanPlayer human;
+        private IHumanPlayer human;
         private AIPlayer AI;
 
-        public AIGame(Graph board, HumanPlayer human, AIPlayer AI)
+        public AIGame(Graph board, IHumanPlayer human, AIPlayer AI)
         {
             this.board = board;
             this.human = human;
