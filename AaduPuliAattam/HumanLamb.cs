@@ -1,6 +1,6 @@
 ﻿namespace AaduPuliAattam
 {
-    internal class HumanLamb : Lamb, HumanPlayer
+    internal class HumanLamb : ILamb, HumanPlayer
     {
         public int TotalCount { get; set; }
         public int PlacedCount { get; set; }

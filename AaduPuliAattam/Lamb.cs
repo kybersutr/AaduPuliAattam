@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal interface Lamb
+    internal interface ILamb
     {
         public int PlacedCount {get; set;}
         public int TotalCount { get; set; }

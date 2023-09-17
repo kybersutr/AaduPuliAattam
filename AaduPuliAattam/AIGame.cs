@@ -19,7 +19,7 @@ namespace AaduPuliAattam
 
             FindOccupied();
 
-            if (human is Tiger) 
+            if (human is ITiger) 
             {
                 AI.Play(board);
             }
@@ -34,9 +34,9 @@ namespace AaduPuliAattam
                 {
                     case Vertex.Occupancy.TIGER:
                         AI.OccupiedIndicesT.Add(i);
-                        if (human is Tiger)
+                        if (human is ITiger)
                         {
-                            ((Tiger)human).OccupiedIndicesT.Add(i);
+                            ((ITiger)human).OccupiedIndicesT.Add(i);
                         }
                         break;
                     case Vertex.Occupancy.LAMB:
@@ -73,7 +73,7 @@ namespace AaduPuliAattam
                 {
                     return;
                 }
-                if (human is Tiger)
+                if (human is ITiger)
                 {
                     for (int i = 0; i < board.Vertices.Count; ++i) 
                     {
@@ -82,20 +82,20 @@ namespace AaduPuliAattam
                             AI.OccupiedIndicesL.Remove(i);
                         }
                     }
-                    AI.CapturedCount = ((Tiger)human).CapturedCount;
-                    AI.OccupiedIndicesT = ((Tiger)human).OccupiedIndicesT;
+                    AI.CapturedCount = ((ITiger)human).CapturedCount;
+                    AI.OccupiedIndicesT = ((ITiger)human).OccupiedIndicesT;
                 }
                 else 
                 {
                     for (int i = 0; i < board.Vertices.Count; ++i) 
                     {
-                        if ((((Lamb)human).OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
+                        if ((((ILamb)human).OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
                         {
-                            ((Lamb)human).OccupiedIndicesL.Remove(i);
+                            ((ILamb)human).OccupiedIndicesL.Remove(i);
                         }
                     }
-                    AI.OccupiedIndicesL = ((Lamb)human).OccupiedIndicesL;
-                    AI.PlacedCount = ((Lamb)human).PlacedCount;
+                    AI.OccupiedIndicesL = ((ILamb)human).OccupiedIndicesL;
+                    AI.PlacedCount = ((ILamb)human).PlacedCount;
                 }
                 AI.Play(board);
             }
@@ -105,7 +105,7 @@ namespace AaduPuliAattam
         {
             int lambsPlaced = AI.TotalCount - AI.PlacedCount;
             int lambsCaptured = AI.CapturedCount;
-            bool lambMove = (human is Lamb);
+            bool lambMove = (human is ILamb);
 
             return new GameStatus(lambsPlaced, lambsCaptured, lambMove);
         }

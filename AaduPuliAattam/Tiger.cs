@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AaduPuliAattam
 {
-    internal interface Tiger
+    internal interface ITiger
     {
         int Treshold { get; set; }
         int CapturedCount { get; set; }

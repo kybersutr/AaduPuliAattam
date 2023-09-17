@@ -1,6 +1,6 @@
 ﻿namespace AaduPuliAattam
 {
-    internal class HumanTiger : Tiger, HumanPlayer
+    internal class HumanTiger : ITiger, HumanPlayer
     {
         public int selectedTigerIndex = -1;
         public List<int> OccupiedIndicesT { get; set; }
