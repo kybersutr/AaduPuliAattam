@@ -3,7 +3,6 @@
     public partial class Menu : Form
     {
 
-        GraphParser parser;
         public static readonly string dir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()).ToString();
         string boardPath;
 
@@ -24,7 +23,6 @@
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            parser = new GraphParser();
             boardPath = Path.Combine(dir, "GameBoards", "Intermediate.brd");
 
             // Recommended values from the rules
@@ -47,7 +45,7 @@
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Graph board = parser.ParseGraph(boardPath);
+            Graph board = GraphParser.ParseGraph(boardPath);
             GameForm game = new GameForm(board, lambs, treshold, mode);
             game.ShowDialog();
         }

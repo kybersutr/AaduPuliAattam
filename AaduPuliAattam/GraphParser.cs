@@ -10,11 +10,19 @@ namespace AaduPuliAattam
 {
     internal class GraphParser
     {
-        public Graph ParseGraph(string filename)
+        public static Graph ParseGraph(string filename)
         {
 
-            using (StreamReader reader = new StreamReader(filename))
+            using (StreamReader reader = new(filename))
             {
+                // Not every invalid input is handled here, since only the premade boards are supposed to be used.
+
+                // Input specification:
+                // 1st line: number of vertices = n
+                // 2nd line: initial positions of tigers
+                // 3rd - (n+3)rd line: vertices coordinates (0 - 100 for each vertex) 
+                // rest: indices of vertices lying on the same line (in the correct order)
+
                 if (!int.TryParse(reader.ReadLine(), out int n))
                 {
                     throw new Exception("Number of vertices should be an Integer.");
