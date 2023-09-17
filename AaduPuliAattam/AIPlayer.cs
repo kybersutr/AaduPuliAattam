@@ -48,7 +48,7 @@ namespace AaduPuliAattam
 
             Move bestMove = null;
 
-            if (depth <= 0)
+            if ((depth <= 0) | (GetScore(board) == int.MinValue) | (GetScore(board) == int.MaxValue))
             {
                 foreach (Move move in GenerateMoves(board, playAsLamb))
                 {
@@ -127,7 +127,6 @@ namespace AaduPuliAattam
         {
             // Try to rank the board without using MinMax.
             // Ranking will use number of captured lambs.
-            // There should also be some metric that would make the score higher, if tigers have "less space to move".
             int score = 0;
             score -= 100 * CapturedCount/Treshold; // Percent of lambs tigers have already captured
             return score;

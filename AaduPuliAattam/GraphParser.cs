@@ -41,7 +41,6 @@ namespace AaduPuliAattam
 
                 for (int i = 0; i < n; ++i) 
                 {
-                    // TODO: if less lines than vertices
                     string position = reader.ReadLine();
                     string[] splitPosition = position.Split(' ');
 
@@ -76,7 +75,6 @@ namespace AaduPuliAattam
                     string[] splitEdge = edge.Split(' ');
 
                     List<Vertex> edgeVertices = new List<Vertex>();
-                    // TODO: vertex index out of range
 
                     foreach (string vertex in splitEdge) 
                     {

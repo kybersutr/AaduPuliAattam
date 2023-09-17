@@ -52,7 +52,6 @@ namespace AaduPuliAattam
                     {
                         if ((lamb.OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
                         {
-                            // TODO: better handling of tiger capturing a lamb?
                             lamb.OccupiedIndicesL.Remove(i);
                         }
                     }
@@ -62,7 +61,6 @@ namespace AaduPuliAattam
 
         public override int CheckForWin()
         {
-            // TODO: It's possible that tigers will have possible move after a lamb has to move...
             // -1 = no winner
             // 0 = lamb wins
             // 1 = tiger wins

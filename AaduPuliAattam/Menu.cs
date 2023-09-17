@@ -4,8 +4,7 @@
     {
 
         GraphParser parser;
-        string dir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()).ToString();
-        // TODO: I hate this. Is there a normal way to get the base directory?
+        public static readonly string dir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()).ToString();
         string boardPath;
 
         int maxLambs;

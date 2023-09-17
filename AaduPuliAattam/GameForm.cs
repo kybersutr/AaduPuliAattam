@@ -6,8 +6,8 @@ namespace AaduPuliAattam
     {
         private List<Button> buttons = new();
         private Game game;
-        public static Image tigerImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\tiger.png");
-        public static Image lambImage = Image.FromFile("C:\\Users\\kyber\\Desktop\\skola\\2023_LS\\C#2.0\\AaduPuliAattam\\AaduPuliAattam\\Assets\\lamb.png");
+        public static Image tigerImage = Image.FromFile(Path.Join(Menu.dir, "Assets","tiger.png"));
+        public static Image lambImage = Image.FromFile(Path.Join(Menu.dir, "Assets", "lamb.png"));
 
         public GameForm(Graph graph, int lnum, int treshold, int mode)
         {
@@ -40,7 +40,7 @@ namespace AaduPuliAattam
         {
             Invalidate();
         }
-        private void DrawBoard(Graphics gx, bool RedrawAll = false)
+        private void DrawBoard(Graphics gx)
         {
             Graph g = this.game.board;
 

@@ -30,25 +30,26 @@ namespace AaduPuliAattam
         {
             for (int i = 0; i < board.Vertices.Count; ++i) 
             {
-                // TODO: Could have been a switch.
-                if (board.Vertices[i].occupiedBy == Vertex.Occupancy.TIGER)
+                switch (board.Vertices[i].occupiedBy) 
                 {
-                    AI.OccupiedIndicesT.Add(i);
-                    if (human is Tiger)
-                    {
-                        ((Tiger)human).OccupiedIndicesT.Add(i);
-                    }
-                }
-                else if (board.Vertices[i].occupiedBy == Vertex.Occupancy.LAMB) 
-                {
-                    AI.OccupiedIndicesL.Add(i);
+                    case Vertex.Occupancy.TIGER:
+                        AI.OccupiedIndicesT.Add(i);
+                        if (human is Tiger)
+                        {
+                            ((Tiger)human).OccupiedIndicesT.Add(i);
+                        }
+                        break;
+                    case Vertex.Occupancy.LAMB:
+                        AI.OccupiedIndicesL.Add(i);
+                        break;
+                    default:
+                        break;
                 }
             }    
         }
 
         public override int CheckForWin()
         {
-            // TODO: It's possible that tigers will have possible move after a lamb has to move...
             // -1 = no winner
             // 0 = lamb wins
             // 1 = tiger wins
@@ -74,7 +75,13 @@ namespace AaduPuliAattam
                 }
                 if (human is Tiger)
                 {
-
+                    for (int i = 0; i < board.Vertices.Count; ++i) 
+                    {
+                        if ((AI.OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
+                        {
+                            AI.OccupiedIndicesL.Remove(i);
+                        }
+                    }
                     AI.CapturedCount = ((Tiger)human).CapturedCount;
                     AI.OccupiedIndicesT = ((Tiger)human).OccupiedIndicesT;
                 }
@@ -84,7 +91,6 @@ namespace AaduPuliAattam
                     {
                         if ((((Lamb)human).OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
                         {
-                            // TODO: better handling of tiger capturing a lamb?
                             ((Lamb)human).OccupiedIndicesL.Remove(i);
                         }
                     }
