@@ -16,12 +16,15 @@
 
         public bool Play(Graph board, int buttonIndex)
         {
+            // Return true if move has been made, false otherwise.
+            // AI player needs to know this.
             if (board.Vertices[buttonIndex].occupiedBy == Vertex.Occupancy.TIGER)
             {
                 return false;
             }
             else if (board.Vertices[buttonIndex].occupiedBy == Vertex.Occupancy.LAMB)
             {
+                // Lambs can start moving once each one is placed on the board.
                 if (PlacedCount < TotalCount)
                 {
                     return false;
