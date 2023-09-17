@@ -27,6 +27,7 @@
             parser = new GraphParser();
             boardPath = Path.Combine(dir, "GameBoards", "Intermediate.brd");
 
+            // Recommended values from the rules
             maxLambs = 20;
             recommendedLambs = 15;
             lambs = recommendedLambs;
@@ -40,7 +41,7 @@
             numericUpDown1.Value = recommendedLambs;
 
             numericUpDown2.Value = recommendedTreshold;
-            numericUpDown2.Maximum = lambs;
+            numericUpDown2.Maximum = lambs; // Treshold for tiger win cannot be greater than the total number of lambs
         }
 
 
