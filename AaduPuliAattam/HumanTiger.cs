@@ -18,6 +18,9 @@
         {
             foreach (int i in OccupiedIndicesT) 
             {
+                // Each tiger can either
+                // - Move to an unoccupied neighbor
+                // - Move to an unoccupied neighbor two places away, provided the middle place is occupied by a lamb
                 foreach (Vertex neighbor in board.Vertices[i].Neighbors) 
                 {
                     if (neighbor.occupiedBy == Vertex.Occupancy.NOTHING) 
@@ -41,10 +44,14 @@
         public bool Play(Graph board, int buttonIndex)
         {
             // Returns true if move has been made, false otherwise.
+            // This is useful to know for the AI player.
+
             if (board.Vertices[buttonIndex].occupiedBy == Vertex.Occupancy.LAMB)
             {
                 return false;
             }
+            // If place occupied by a tiger is clicked, this tiger is selected to be moved 
+            // by the next click.
             else if (board.Vertices[buttonIndex].occupiedBy == Vertex.Occupancy.TIGER)
             {
                 if (selectedTigerIndex != -1)
