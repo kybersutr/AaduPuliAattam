@@ -54,7 +54,7 @@ namespace AaduPuliAattam
             // 0 = lamb wins
             // 1 = tiger wins
 
-            if (AI.CapturedCount >= AI.Treshold) 
+            if ((AI.CapturedCount >= AI.Treshold) | !AI.LambHasMoves(board)) 
             {
                 return 1;
             }

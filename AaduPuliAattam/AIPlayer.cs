@@ -108,13 +108,13 @@ namespace AaduPuliAattam
 
         private int GetScore(Graph board)
         {
-            if ((CapturedCount == Treshold)) 
+            if ((CapturedCount == Treshold) | GenerateMovesLamb(board).Count == 0) 
             {
                 // tigers win
                 return int.MinValue;
             }
 
-            if (GenerateMoves(board, false).Count == 0) 
+            if (GenerateMovesTiger(board).Count == 0) 
             {
                 // lambs win
                 return int.MaxValue;
@@ -141,60 +141,83 @@ namespace AaduPuliAattam
 
         public bool TigerHasMoves(Graph board) 
         {
-            return (GenerateMoves(board, false).Count != 0);
+            return (GenerateMovesTiger(board).Count != 0);
+        }
+
+        public bool LambHasMoves(Graph board) 
+        {
+            return (GenerateMovesLamb(board).Count != 0);
         }
         private List<Move> GenerateMoves(Graph board, bool playAsLamb) 
         {
             List<Move> moves = new();
             if (playAsLamb)
             {
-                if (this.PlacedCount < this.TotalCount)
+                moves = GenerateMovesLamb(board); 
+            }
+            else 
+            {
+                moves = GenerateMovesTiger(board); 
+            }
+            return moves;
+        }
+
+        private List<Move> GenerateMovesLamb(Graph board) 
+        {
+            List<Move> moves = new();
+
+            if (this.PlacedCount < this.TotalCount)
+            {
+                foreach (Vertex v in board.Vertices) 
                 {
-                    foreach (Vertex v in board.Vertices) 
+                    if (v.OccupiedBy == Vertex.Occupancy.NOTHING) 
                     {
-                        if (v.OccupiedBy == Vertex.Occupancy.NOTHING) 
-                        {
-                            moves.Add(new Move(true, null, v));
-                        }
-                    }
-                }
-                else 
-                {
-                    foreach (int lambIndex in OccupiedIndicesL) 
-                    {
-                        foreach (Vertex neighbor in board.Vertices[lambIndex].Neighbors) 
-                        {
-                            if (neighbor.OccupiedBy == Vertex.Occupancy.NOTHING) 
-                            {
-                                moves.Add(new Move(true, board.Vertices[lambIndex], neighbor));
-                            }
-                        }
+                        moves.Add(new Move(true, null, v));
                     }
                 }
             }
             else 
             {
-                foreach (int tigerIndex in OccupiedIndicesT) 
+                foreach (int lambIndex in OccupiedIndicesL) 
                 {
-                    foreach (Vertex neighbor in board.Vertices[tigerIndex].Neighbors) 
+                    foreach (Vertex neighbor in board.Vertices[lambIndex].Neighbors) 
                     {
                         if (neighbor.OccupiedBy == Vertex.Occupancy.NOTHING) 
                         {
-                            moves.Add(new Move(false, board.Vertices[tigerIndex], neighbor));
-                        }
-                    }
-
-                    foreach (Vertex skipNeighbor in board.Vertices[tigerIndex].SkipOneNeighbors) 
-                    {
-                        if (skipNeighbor.OccupiedBy == Vertex.Occupancy.NOTHING &
-                            board.Between[board.Vertices[tigerIndex]][skipNeighbor].OccupiedBy == Vertex.Occupancy.LAMB) 
-                        {
-                            moves.Add(new Move(false, board.Vertices[tigerIndex], skipNeighbor,
-                                board.Between[board.Vertices[tigerIndex]][skipNeighbor]));
+                            moves.Add(new Move(true, board.Vertices[lambIndex], neighbor));
                         }
                     }
                 }
             }
+
+            return moves;
+        }
+
+        private List<Move> GenerateMovesTiger(Graph board) 
+        {
+            List<Move> moves = new();
+
+            foreach (int tigerIndex in OccupiedIndicesT) 
+            {
+                foreach (Vertex neighbor in board.Vertices[tigerIndex].Neighbors) 
+                {
+                    if (neighbor.OccupiedBy == Vertex.Occupancy.NOTHING) 
+                    {
+                        moves.Add(new Move(false, board.Vertices[tigerIndex], neighbor));
+                    }
+                }
+
+                foreach (Vertex skipNeighbor in board.Vertices[tigerIndex].SkipOneNeighbors) 
+                {
+                    if (skipNeighbor.OccupiedBy == Vertex.Occupancy.NOTHING &
+                        board.Between[board.Vertices[tigerIndex]][skipNeighbor].OccupiedBy == Vertex.Occupancy.LAMB) 
+                    {
+                        moves.Add(new Move(false, board.Vertices[tigerIndex], skipNeighbor,
+                        board.Between[board.Vertices[tigerIndex]][skipNeighbor]));
+                    }
+                }
+            }
+
             return moves;
         }
     }
