@@ -68,7 +68,7 @@ namespace AaduPuliAattam
             // 0 = lamb wins
             // 1 = tiger wins
 
-            if (tiger.CapturedCount >= tiger.Treshold) 
+            if ((tiger.CapturedCount >= tiger.Treshold) | (!lamb.HasLegalMoves(board))) 
             {
                 // Tiger wins if it captured enough lambs.
                 return 1;

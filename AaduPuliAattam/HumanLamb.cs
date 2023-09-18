@@ -72,5 +72,35 @@
                 }
             }
         }
+
+        internal bool HasLegalMoves(Graph board)
+        {
+            if (this.PlacedCount < this.TotalCount)
+            {
+                foreach (Vertex v in board.Vertices) 
+                {
+                    if (v.OccupiedBy == Vertex.Occupancy.NOTHING) 
+                    {
+                        return true;
+                    }
+                }
+            }
+            else 
+            {
+                foreach (int lambIndex in OccupiedIndicesL) 
+                {
+                    foreach (Vertex neighbor in board.Vertices[lambIndex].Neighbors) 
+                    {
+                        if (neighbor.OccupiedBy == Vertex.Occupancy.NOTHING) 
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+
+        }
     }
 }
