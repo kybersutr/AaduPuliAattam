@@ -19,6 +19,20 @@ ostatní řádky: indexy vrcholů ležících na jedné přímce (co řádek to 
 
 Pozn.: Validita vstupu není v kódu (až na triviality jako správný počet tygrů apod.) ošetřována. (Například jestli pozice vrcholů na jedné přímce opravdu odpovídají jedné přímce.) Uživatel momentálně nemá možnost přidávat si vlastní herní plochy, a kdyby tato funkcionalita byla později přidána, ukládaly by se herní plochy do souboru přímo z programu samotného.
 
+## Formát herního plánu
+
+Herní plán je uložený jako instance třídy Graph. Ta si kromě pozic vrcholů a seznamu hran ukládá pro každý vrchol ještě informaci jestli je momentálně vybraný (v situaci, kdy hráč vybírá, kterou postavou pohnout) a seznamy sousedů a sousedů "ob jedno" (aby tygr věděl, kam může přeskakovat). Navíc je ve třídě Graph ještě dvojitý slovník držící si pro dvojice vrcholů "ob jedno", který vrchol je mezi nimi. 
+
+## Hra
+
+Abstraktní třída Game má 3 abstraktní metody: `CheckForWin()`, `HandleButtonClick(int i)` a `GetStatus()`. Poslední zmíněná metoda se využívá k vypisování stavu hry ve formuláři, aniž by musel zasahovat do vnitřních proměnných hry.
+
+Podle toho, jestli chce uživatel hrát proti člověku, nebo počítači, je zvolena buď HumanGame, nebo AIGame. HumanGame rozlišuje hráče podle toho, jestli hrají za Jehňátka, nebo za Tygry, kdežto pro AIGame je výhodnější rozlišovat podle toho, jestli je hráč člověk, nebo počítač. 
+
+## ILamb a ITiger
+
+eee
+
 ## AI Player
 
 Umělý hráč je implementovaný pomocí MinMax algoritmu, který se ve hrách dvou hráčů běžně používá. (Jehňátka se snaží skóre maximalizovat, tygři minimalizovat.) Při dosažení maximální hloubky MinMaxu používá umělý hráč heuristické ohodnocení hrací plochy, které závisí pouze na počtu zajatých jehňátek.
