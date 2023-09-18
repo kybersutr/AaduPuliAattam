@@ -95,7 +95,7 @@ namespace AaduPuliAattam
                 newButton.Location = new Point(padding + (v.Position.Item1 - g.MinX) * widthUnit - newButton.Width / 2,
                     padding + (v.Position.Item2 - g.MinY) * heightUnit - newButton.Height / 2);
 
-                switch (v.occupiedBy)
+                switch (v.OccupiedBy)
                 {
                     case Vertex.Occupancy.NOTHING:
                         {

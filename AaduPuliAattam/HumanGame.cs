@@ -29,7 +29,7 @@ namespace AaduPuliAattam
         {
             for (int i = 0; i < board.Vertices.Count; ++i) 
             {
-                if (board.Vertices[i].occupiedBy == Vertex.Occupancy.TIGER)
+                if (board.Vertices[i].OccupiedBy == Vertex.Occupancy.TIGER)
                 {
                     tiger.OccupiedIndicesT.Add(i);
                 }
@@ -52,7 +52,7 @@ namespace AaduPuliAattam
                     this.turn = 0;
                     for (int i = 0; i < board.Vertices.Count; ++i) 
                     {
-                        if ((lamb.OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
+                        if ((lamb.OccupiedIndicesL.Contains(i)) & (board.Vertices[i].OccupiedBy == Vertex.Occupancy.NOTHING)) 
                         {
                             // If lamb was captured, we need to update its occupied vertices.
                             lamb.OccupiedIndicesL.Remove(i);

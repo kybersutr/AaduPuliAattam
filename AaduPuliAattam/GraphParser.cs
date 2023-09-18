@@ -67,12 +67,12 @@ namespace AaduPuliAattam
 
                 foreach (Vertex v in vertices) 
                 {
-                    v.occupiedBy = Vertex.Occupancy.NOTHING;
+                    v.OccupiedBy = Vertex.Occupancy.NOTHING;
                 }
 
                 foreach (int p in tigerPositions) 
                 {
-                    vertices[p].occupiedBy = Vertex.Occupancy.TIGER;
+                    vertices[p].OccupiedBy = Vertex.Occupancy.TIGER;
                 }
 
                 List<List<Vertex>> edges = new List<List<Vertex>>();

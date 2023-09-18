@@ -16,9 +16,9 @@ namespace Tests
         public void MoveTigerOneSpace()
         {
             Graph board = CreateBoard();
-            board.Vertices[0].occupiedBy = Vertex.Occupancy.TIGER;
-            board.Vertices[1].occupiedBy = Vertex.Occupancy.NOTHING;
-            board.Vertices[2].occupiedBy = Vertex.Occupancy.NOTHING;
+            board.Vertices[0].OccupiedBy = Vertex.Occupancy.TIGER;
+            board.Vertices[1].OccupiedBy = Vertex.Occupancy.NOTHING;
+            board.Vertices[2].OccupiedBy = Vertex.Occupancy.NOTHING;
 
             AIPlayer player = new AIPlayer(true, 4, 5, 3);
             player.OccupiedIndicesT = new List<int> { 0 };
@@ -29,9 +29,9 @@ namespace Tests
             Move move = new Move(false, board.Vertices[0], board.Vertices[1]);
             move.Apply(board, player);
 
-            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[0].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[1].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[2].occupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[0].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[1].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[2].OccupiedBy);
 
             Assert.IsTrue(player.OccupiedIndicesT.Count == 1);
             Assert.IsTrue(player.OccupiedIndicesT.Contains(1));
@@ -46,9 +46,9 @@ namespace Tests
         public void ReverseTigerOneSpace()
         {
             Graph board = CreateBoard();
-            board.Vertices[0].occupiedBy = Vertex.Occupancy.NOTHING;
-            board.Vertices[1].occupiedBy = Vertex.Occupancy.TIGER;
-            board.Vertices[2].occupiedBy = Vertex.Occupancy.NOTHING;
+            board.Vertices[0].OccupiedBy = Vertex.Occupancy.NOTHING;
+            board.Vertices[1].OccupiedBy = Vertex.Occupancy.TIGER;
+            board.Vertices[2].OccupiedBy = Vertex.Occupancy.NOTHING;
 
             AIPlayer player = new AIPlayer(true, 4, 5, 3);
             player.OccupiedIndicesT = new List<int> { 1 };
@@ -59,9 +59,9 @@ namespace Tests
             Move move = new Move(false, board.Vertices[0], board.Vertices[1]);
             move.Reverse(board, player);
 
-            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[0].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[1].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[2].occupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[0].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[1].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[2].OccupiedBy);
 
             Assert.IsTrue(player.OccupiedIndicesT.Count == 1);
             Assert.IsTrue(player.OccupiedIndicesT.Contains(0));
@@ -76,9 +76,9 @@ namespace Tests
         public void MoveTigerCapture() 
         {
             Graph board = CreateBoard();
-            board.Vertices[0].occupiedBy = Vertex.Occupancy.TIGER;
-            board.Vertices[1].occupiedBy = Vertex.Occupancy.LAMB;
-            board.Vertices[2].occupiedBy = Vertex.Occupancy.NOTHING;
+            board.Vertices[0].OccupiedBy = Vertex.Occupancy.TIGER;
+            board.Vertices[1].OccupiedBy = Vertex.Occupancy.LAMB;
+            board.Vertices[2].OccupiedBy = Vertex.Occupancy.NOTHING;
 
             AIPlayer player = new AIPlayer(true, 4, 5, 3);
             player.OccupiedIndicesT = new List<int> { 0 };
@@ -89,9 +89,9 @@ namespace Tests
             Move move = new Move(false, board.Vertices[0], board.Vertices[2], board.Vertices[1]);
             move.Apply(board, player);
 
-            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[0].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[1].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[2].occupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[0].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[1].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[2].OccupiedBy);
 
             Assert.IsTrue(player.OccupiedIndicesT.Count == 1);
             Assert.IsTrue(player.OccupiedIndicesT.Contains(2));
@@ -106,9 +106,9 @@ namespace Tests
         public void ReverseTigerCapture() 
         {
             Graph board = CreateBoard();
-            board.Vertices[0].occupiedBy = Vertex.Occupancy.NOTHING;
-            board.Vertices[1].occupiedBy = Vertex.Occupancy.NOTHING;
-            board.Vertices[2].occupiedBy = Vertex.Occupancy.TIGER;
+            board.Vertices[0].OccupiedBy = Vertex.Occupancy.NOTHING;
+            board.Vertices[1].OccupiedBy = Vertex.Occupancy.NOTHING;
+            board.Vertices[2].OccupiedBy = Vertex.Occupancy.TIGER;
 
             AIPlayer player = new AIPlayer(true, 4, 5, 3);
             player.OccupiedIndicesT = new List<int> { 2 };
@@ -119,9 +119,9 @@ namespace Tests
             Move move = new Move(false, board.Vertices[0], board.Vertices[2], board.Vertices[1]);
             move.Reverse(board, player);
 
-            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[0].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[1].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[2].occupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[0].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[1].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[2].OccupiedBy);
 
             Assert.IsTrue(player.OccupiedIndicesT.Count == 1);
             Assert.IsTrue(player.OccupiedIndicesT.Contains(0));
@@ -137,9 +137,9 @@ namespace Tests
         public void MoveLambNew() 
         {
             Graph board = CreateBoard();
-            board.Vertices[0].occupiedBy = Vertex.Occupancy.LAMB;
-            board.Vertices[1].occupiedBy = Vertex.Occupancy.NOTHING;
-            board.Vertices[2].occupiedBy = Vertex.Occupancy.TIGER;
+            board.Vertices[0].OccupiedBy = Vertex.Occupancy.LAMB;
+            board.Vertices[1].OccupiedBy = Vertex.Occupancy.NOTHING;
+            board.Vertices[2].OccupiedBy = Vertex.Occupancy.TIGER;
 
             AIPlayer player = new AIPlayer(true, 4, 5, 3);
             player.OccupiedIndicesT = new List<int> { 2 };
@@ -150,9 +150,9 @@ namespace Tests
             Move move = new Move(true, null, board.Vertices[1]);
             move.Apply(board, player);
 
-            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[0].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[1].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[2].occupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[0].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[1].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[2].OccupiedBy);
 
             Assert.IsTrue(player.OccupiedIndicesT.Count == 1);
             Assert.IsTrue(player.OccupiedIndicesT.Contains(2));
@@ -169,9 +169,9 @@ namespace Tests
         public void ReverseLambNew() 
         {
             Graph board = CreateBoard();
-            board.Vertices[0].occupiedBy = Vertex.Occupancy.LAMB;
-            board.Vertices[1].occupiedBy = Vertex.Occupancy.LAMB;
-            board.Vertices[2].occupiedBy = Vertex.Occupancy.TIGER;
+            board.Vertices[0].OccupiedBy = Vertex.Occupancy.LAMB;
+            board.Vertices[1].OccupiedBy = Vertex.Occupancy.LAMB;
+            board.Vertices[2].OccupiedBy = Vertex.Occupancy.TIGER;
 
             AIPlayer player = new AIPlayer(true, 4, 5, 3);
             player.OccupiedIndicesT = new List<int> { 2 };
@@ -182,9 +182,9 @@ namespace Tests
             Move move = new Move(true, null, board.Vertices[1]);
             move.Reverse(board, player);
 
-            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[0].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[1].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[2].occupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[0].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[1].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[2].OccupiedBy);
 
             Assert.IsTrue(player.OccupiedIndicesT.Count == 1);
             Assert.IsTrue(player.OccupiedIndicesT.Contains(2));
@@ -200,9 +200,9 @@ namespace Tests
         public void MoveLambOld() 
         {
             Graph board = CreateBoard();
-            board.Vertices[0].occupiedBy = Vertex.Occupancy.LAMB;
-            board.Vertices[1].occupiedBy = Vertex.Occupancy.NOTHING;
-            board.Vertices[2].occupiedBy = Vertex.Occupancy.TIGER;
+            board.Vertices[0].OccupiedBy = Vertex.Occupancy.LAMB;
+            board.Vertices[1].OccupiedBy = Vertex.Occupancy.NOTHING;
+            board.Vertices[2].OccupiedBy = Vertex.Occupancy.TIGER;
 
             AIPlayer player = new AIPlayer(true, 4, 5, 3);
             player.OccupiedIndicesT = new List<int> { 2 };
@@ -213,9 +213,9 @@ namespace Tests
             Move move = new Move(true, board.Vertices[0], board.Vertices[1]);
             move.Apply(board, player);
 
-            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[0].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[1].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[2].occupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[0].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[1].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[2].OccupiedBy);
 
             Assert.IsTrue(player.OccupiedIndicesT.Count == 1);
             Assert.IsTrue(player.OccupiedIndicesT.Contains(2));
@@ -231,9 +231,9 @@ namespace Tests
         public void ReverseLambOld() 
         {   
             Graph board = CreateBoard();
-            board.Vertices[0].occupiedBy = Vertex.Occupancy.NOTHING;
-            board.Vertices[1].occupiedBy = Vertex.Occupancy.LAMB;
-            board.Vertices[2].occupiedBy = Vertex.Occupancy.TIGER;
+            board.Vertices[0].OccupiedBy = Vertex.Occupancy.NOTHING;
+            board.Vertices[1].OccupiedBy = Vertex.Occupancy.LAMB;
+            board.Vertices[2].OccupiedBy = Vertex.Occupancy.TIGER;
 
             AIPlayer player = new AIPlayer(true, 4, 5, 3);
             player.OccupiedIndicesT = new List<int> { 2 };
@@ -244,9 +244,9 @@ namespace Tests
             Move move = new Move(true, board.Vertices[0], board.Vertices[1]);
             move.Reverse(board, player);
 
-            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[0].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[1].occupiedBy);
-            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[2].occupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.LAMB, board.Vertices[0].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.NOTHING, board.Vertices[1].OccupiedBy);
+            Assert.AreEqual(Vertex.Occupancy.TIGER, board.Vertices[2].OccupiedBy);
 
             Assert.IsTrue(player.OccupiedIndicesT.Count == 1);
             Assert.IsTrue(player.OccupiedIndicesT.Contains(2));

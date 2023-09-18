@@ -10,7 +10,7 @@ namespace AaduPuliAattam
     {
         public (int, int) Position { get; private set; }
         public enum Occupancy { NOTHING, TIGER, LAMB };
-        public Occupancy occupiedBy { get; set; }
+        public Occupancy OccupiedBy { get; set; }
         public List<Vertex> Neighbors { get; internal set; }
         public List<Vertex> SkipOneNeighbors { get; internal set; }
 
@@ -29,6 +29,7 @@ namespace AaduPuliAattam
 
         public Dictionary<Vertex, Dictionary<Vertex, Vertex>> Between { get; private set; }
 
+        // Values needed for graph drawing.
         public int MinX { get; private set; }
         public int MaxX { get; private set; }
         public int MinY { get; private set; }

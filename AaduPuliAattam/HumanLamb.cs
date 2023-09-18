@@ -18,11 +18,11 @@
         {
             // Return true if move has been made, false otherwise.
             // AI player needs to know this.
-            if (board.Vertices[buttonIndex].occupiedBy == Vertex.Occupancy.TIGER)
+            if (board.Vertices[buttonIndex].OccupiedBy == Vertex.Occupancy.TIGER)
             {
                 return false;
             }
-            else if (board.Vertices[buttonIndex].occupiedBy == Vertex.Occupancy.LAMB)
+            else if (board.Vertices[buttonIndex].OccupiedBy == Vertex.Occupancy.LAMB)
             {
                 // Lambs can start moving once each one is placed on the board.
                 if (PlacedCount < TotalCount)
@@ -44,7 +44,7 @@
             {
                 if (PlacedCount < TotalCount)
                 {
-                    board.Vertices[buttonIndex].occupiedBy = Vertex.Occupancy.LAMB;
+                    board.Vertices[buttonIndex].OccupiedBy = Vertex.Occupancy.LAMB;
                     OccupiedIndicesL.Add(buttonIndex);
                     PlacedCount++;
                     return true;
@@ -61,9 +61,9 @@
                         {
                             return false;
                         }
-                        board.Vertices[buttonIndex].occupiedBy = Vertex.Occupancy.LAMB;
+                        board.Vertices[buttonIndex].OccupiedBy = Vertex.Occupancy.LAMB;
                         OccupiedIndicesL.Add(buttonIndex);
-                        board.Vertices[selectedLambIndex].occupiedBy = Vertex.Occupancy.NOTHING;
+                        board.Vertices[selectedLambIndex].OccupiedBy = Vertex.Occupancy.NOTHING;
                         OccupiedIndicesL.Remove(buttonIndex);
                         board.Vertices[selectedLambIndex].Selected = false;
                         selectedLambIndex = -1;

@@ -30,7 +30,7 @@ namespace AaduPuliAattam
         {
             for (int i = 0; i < board.Vertices.Count; ++i) 
             {
-                switch (board.Vertices[i].occupiedBy) 
+                switch (board.Vertices[i].OccupiedBy) 
                 {
                     case Vertex.Occupancy.TIGER:
                         AI.OccupiedIndicesT.Add(i);
@@ -77,7 +77,7 @@ namespace AaduPuliAattam
                 {
                     for (int i = 0; i < board.Vertices.Count; ++i) 
                     {
-                        if ((AI.OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
+                        if ((AI.OccupiedIndicesL.Contains(i)) & (board.Vertices[i].OccupiedBy == Vertex.Occupancy.NOTHING)) 
                         {
                             AI.OccupiedIndicesL.Remove(i);
                         }
@@ -89,7 +89,7 @@ namespace AaduPuliAattam
                 {
                     for (int i = 0; i < board.Vertices.Count; ++i) 
                     {
-                        if ((((ILamb)human).OccupiedIndicesL.Contains(i)) & (board.Vertices[i].occupiedBy == Vertex.Occupancy.NOTHING)) 
+                        if ((((ILamb)human).OccupiedIndicesL.Contains(i)) & (board.Vertices[i].OccupiedBy == Vertex.Occupancy.NOTHING)) 
                         {
                             ((ILamb)human).OccupiedIndicesL.Remove(i);
                         }

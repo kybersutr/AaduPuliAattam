@@ -152,7 +152,7 @@ namespace AaduPuliAattam
                 {
                     foreach (Vertex v in board.Vertices) 
                     {
-                        if (v.occupiedBy == Vertex.Occupancy.NOTHING) 
+                        if (v.OccupiedBy == Vertex.Occupancy.NOTHING) 
                         {
                             moves.Add(new Move(true, null, v));
                         }
@@ -164,7 +164,7 @@ namespace AaduPuliAattam
                     {
                         foreach (Vertex neighbor in board.Vertices[lambIndex].Neighbors) 
                         {
-                            if (neighbor.occupiedBy == Vertex.Occupancy.NOTHING) 
+                            if (neighbor.OccupiedBy == Vertex.Occupancy.NOTHING) 
                             {
                                 moves.Add(new Move(true, board.Vertices[lambIndex], neighbor));
                             }
@@ -178,7 +178,7 @@ namespace AaduPuliAattam
                 {
                     foreach (Vertex neighbor in board.Vertices[tigerIndex].Neighbors) 
                     {
-                        if (neighbor.occupiedBy == Vertex.Occupancy.NOTHING) 
+                        if (neighbor.OccupiedBy == Vertex.Occupancy.NOTHING) 
                         {
                             moves.Add(new Move(false, board.Vertices[tigerIndex], neighbor));
                         }
@@ -186,8 +186,8 @@ namespace AaduPuliAattam
 
                     foreach (Vertex skipNeighbor in board.Vertices[tigerIndex].SkipOneNeighbors) 
                     {
-                        if (skipNeighbor.occupiedBy == Vertex.Occupancy.NOTHING &
-                            board.Between[board.Vertices[tigerIndex]][skipNeighbor].occupiedBy == Vertex.Occupancy.LAMB) 
+                        if (skipNeighbor.OccupiedBy == Vertex.Occupancy.NOTHING &
+                            board.Between[board.Vertices[tigerIndex]][skipNeighbor].OccupiedBy == Vertex.Occupancy.LAMB) 
                         {
                             moves.Add(new Move(false, board.Vertices[tigerIndex], skipNeighbor,
                                 board.Between[board.Vertices[tigerIndex]][skipNeighbor]));
