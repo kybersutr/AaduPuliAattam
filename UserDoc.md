@@ -12,7 +12,7 @@ V hlavním menu si můžete zvolit tři herní plány:
 
 Dále je možné si zvolit hru proti jinému proti hráči nebo proti počítači (lze si vybrat, jestli bude počítač hrát za jehňátka, nebo za tygry).
 
-V menu se taky dá navolit, kolik jehňátek bude ve hře, a kolik jich musí tygři zajmout, aby vyhráli. Výchozí možnost počtu jehňátek je doporučená, ale hráč si může navolit libovolnou kombinaci, kterou logika hry dovoluje (například nemůže být víc jehňátek + tygrů, než je velikost herní plochy).
+V menu se taky dá navolit, kolik jehňátek bude ve hře, a kolik jich musí tygři zajmout, aby vyhráli. Výchozí možnost počtu jehňátek je doporučená pro vybalancovanou hru, ale hráč si může navolit libovolnou kombinaci, kterou logika hry dovoluje (například nemůže být víc jehňátek + tygrů, než je velikost herní plochy).
 
 ## Pravidla
 
