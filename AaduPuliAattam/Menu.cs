@@ -37,9 +37,11 @@
 
             numericUpDown1.Maximum = maxLambs;
             numericUpDown1.Value = recommendedLambs;
+            numericUpDown1.Minimum = 1;
 
             numericUpDown2.Value = recommendedTreshold;
             numericUpDown2.Maximum = lambs; // Treshold for tiger win cannot be greater than the total number of lambs
+            numericUpDown2.Minimum = 1;
         }
 
 
