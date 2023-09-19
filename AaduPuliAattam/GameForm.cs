@@ -19,8 +19,8 @@ namespace AaduPuliAattam
 
             Invalidate();
 
-            //const int AIDEPTH = 3;
             const int AIDEPTH = 3;
+
             if (mode == 0)
             {
                 this.game = new HumanGame(graph, new HumanLamb(lnum), new HumanTiger(treshold));
