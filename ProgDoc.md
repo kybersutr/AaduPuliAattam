@@ -29,14 +29,17 @@ Abstraktní třída Game má 3 abstraktní metody: `CheckForWin()`, `HandleButto
 
 Podle toho, jestli chce uživatel hrát proti člověku, nebo počítači, je zvolena buď HumanGame, nebo AIGame. HumanGame rozlišuje hráče podle toho, jestli hrají za Jehňátka, nebo za Tygry, kdežto pro AIGame je výhodnější rozlišovat podle toho, jestli je hráč člověk, nebo počítač. 
 
+HumanGame zpracovává stisknutí tlačítka tak, že si drží informaci, kdo je zrovna na tahu, a poté nechá příslušného hráče vykonat tah. AIGame nechá vždy vykonat tah lidského hráče, a pokud byl tah úspěšný, odehraje rovnou i tah umělého hráče.
+
+V obou případech je občas nutné zkontrolovat, jestli mají hráči nějaké validní tahy - to je provedeno tak, že se podívá na každou figurku a zkontroluje se, jestli má nějaké prázdné sousedy (nebo sousedy "ob jedno"), kam se může posunout.
+
 ## ILamb a ITiger
 
-eee
+Ve programu jsou rozhranní ILamb a ITiger, které lidský a umělý hráč implementují. Umělý hráč implementuje jak ILamb, tak ITiger, protože při MinMaxu potřebuje umět hrát jako oba tito hráči.
 
 ## AI Player
 
 Umělý hráč je implementovaný pomocí MinMax algoritmu, který se ve hrách dvou hráčů běžně používá. (Jehňátka se snaží skóre maximalizovat, tygři minimalizovat.) Při dosažení maximální hloubky MinMaxu používá umělý hráč heuristické ohodnocení hrací plochy, které závisí pouze na počtu zajatých jehňátek.
 
-Umělý hráč implementuje zároveň rozhraní Jehňátka i Tygra, protože v MinMaxu potřebuje umět hrát jako oba tito hráči. 
-
 Zajímavostí je, že umělý hráč je "líný" - pokud má víc ekvivalentních možností, jak zajmout jehňátko, počká si, až zbyde jen jedna z nich, a až pak tah provede.
+
