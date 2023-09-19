@@ -56,8 +56,6 @@ namespace AaduPuliAattam
 
             if ((AI.CapturedCount >= AI.Treshold) | !AI.LambHasMoves(board)) 
             {
-                bool f = AI.LambHasMoves(board);
-                bool k = AI.LambHasMoves(board);
                 return 1;
             }
             if (!AI.TigerHasMoves(board)) 
