@@ -1,6 +1,6 @@
 ## Spuštění hry
 
-Hru spustíte otevřením programu `AaduPuliAattam.exe` ve složce `AaduPuliAattam/bin/Debug/net6.0-windows/`. 
+Hru spustíte otevřením programu `AaduPuliAattam.exe`. (Není na githubu, kdybyste si hru chtěli zahrát, a měli problém s kompilací, napište mi.)
 
 ## Menu
 
