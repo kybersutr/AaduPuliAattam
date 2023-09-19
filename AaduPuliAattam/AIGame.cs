@@ -56,6 +56,8 @@ namespace AaduPuliAattam
 
             if ((AI.CapturedCount >= AI.Treshold) | !AI.LambHasMoves(board)) 
             {
+                bool f = AI.LambHasMoves(board);
+                bool k = AI.LambHasMoves(board);
                 return 1;
             }
             if (!AI.TigerHasMoves(board)) 
@@ -79,25 +81,29 @@ namespace AaduPuliAattam
                     {
                         if ((AI.OccupiedIndicesL.Contains(i)) & (board.Vertices[i].OccupiedBy == Vertex.Occupancy.NOTHING)) 
                         {
-                            AI.OccupiedIndicesL.Remove(i);
+                            AI.OccupiedIndicesL.Remove(i); // lamb has been captured
                         }
                     }
                     AI.CapturedCount = ((ITiger)human).CapturedCount;
                     AI.OccupiedIndicesT = ((ITiger)human).OccupiedIndicesT;
+
+                    AI.Play(board);
                 }
                 else 
                 {
+                    AI.OccupiedIndicesL = ((ILamb)human).OccupiedIndicesL;
+                    AI.PlacedCount = ((ILamb)human).PlacedCount;
+
+                    AI.Play(board); 
+                    
                     for (int i = 0; i < board.Vertices.Count; ++i) 
                     {
                         if ((((ILamb)human).OccupiedIndicesL.Contains(i)) & (board.Vertices[i].OccupiedBy == Vertex.Occupancy.NOTHING)) 
                         {
-                            ((ILamb)human).OccupiedIndicesL.Remove(i);
+                            ((ILamb)human).OccupiedIndicesL.Remove(i); // lamb has been captured
                         }
                     }
-                    AI.OccupiedIndicesL = ((ILamb)human).OccupiedIndicesL;
-                    AI.PlacedCount = ((ILamb)human).PlacedCount;
                 }
-                AI.Play(board);
             }
         }
 

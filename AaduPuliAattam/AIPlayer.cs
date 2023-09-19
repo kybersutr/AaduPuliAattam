@@ -15,7 +15,8 @@ namespace AaduPuliAattam
         public int CapturedCount { get; set; }
         public List<int> OccupiedIndicesT { get; set; }
 
-        public List<int> OccupiedIndicesL { get; set; }
+        public List<int> OccupiedIndicesL { get; 
+            set; }
         public int PlacedCount { get; set; }
 
         public int TotalCount { get; set; }
@@ -134,6 +135,10 @@ namespace AaduPuliAattam
         
         public void Play(Graph board)
         {
+            if (GenerateMoves(board, isLamb).Count == 0) 
+            {
+                return;
+            }
             Tuple<int, Move> best = MinMax(board, isLamb, maxDepth);
             Move bestMove = best.Item2;
             bestMove.Apply(board, this);

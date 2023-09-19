@@ -64,7 +64,7 @@
                         board.Vertices[buttonIndex].OccupiedBy = Vertex.Occupancy.LAMB;
                         OccupiedIndicesL.Add(buttonIndex);
                         board.Vertices[selectedLambIndex].OccupiedBy = Vertex.Occupancy.NOTHING;
-                        OccupiedIndicesL.Remove(buttonIndex);
+                        OccupiedIndicesL.Remove(selectedLambIndex);
                         board.Vertices[selectedLambIndex].Selected = false;
                         selectedLambIndex = -1;
                         return true;
